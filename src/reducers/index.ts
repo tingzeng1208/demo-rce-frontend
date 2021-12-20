@@ -1,9 +1,9 @@
 import { combineReducers} from 'redux';
 import { todoReducers } from './todos';
-import { Todo } from  '../actions';
+import { FEMAApplication } from  '../actions';
 
 export interface StoreState {
-  todos: Todo[]
+  todos: FEMAApplication[]
 }
 
 export const reducers = combineReducers<StoreState> (
@@ -11,12 +11,3 @@ export const reducers = combineReducers<StoreState> (
   
 );
 
-// export const reducers = combineReducers (
-//   {
-//     counter: ()=> 1
-//   }
-// );
-
-// {
-//   todos: [Todo, Todo, Todo]
-// }

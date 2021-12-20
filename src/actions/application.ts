@@ -4,7 +4,7 @@ import {ActionTypes} from './types';
 
 const url = 'https://mockend.com/tingzeng1208/rce-mock-backend/posts';
 
-export interface Todo {
+export interface FEMAApplication {
   id: number;
   Address: string;
   State: string;
@@ -16,7 +16,7 @@ export interface Todo {
 
 export interface FetchTodosAction {
   type: ActionTypes.fetchTodos;
-  payload: Todo[];
+  payload: FEMAApplication[];
 }
 
 export interface DeleteTodoAction {
@@ -27,7 +27,7 @@ export interface DeleteTodoAction {
 export const fetchTodos = () => {
   return async (dispatch: Dispatch)=>{
 
-      const response = await axios.get<Todo[]>(url);
+      const response = await axios.get<FEMAApplication[]>(url);
       dispatch<FetchTodosAction>({
         type: ActionTypes.fetchTodos,
         payload: response.data

@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect} from 'react-redux';
-import {Todo, fetchTodos, deleteTodos } from '../actions';
+import {FEMAApplication, fetchTodos, deleteTodos } from '../actions';
 import {StoreState } from '../reducers';
 
 
 interface AppProps {
-  todos: Todo[];
+  todos: FEMAApplication[];
   fetchTodos: Function;
   deleteTodos: typeof deleteTodos;
 }
@@ -22,7 +22,7 @@ class _App extends React.Component<AppProps>{
   }
 
   renderList(): JSX.Element[] {
-    return this.props.todos.map((todos: Todo) =>
+    return this.props.todos.map((todos: FEMAApplication) =>
 
     {
       return <tr><td>{todos.ApplicantName} </td><td>{todos.status? "Active": "Inactive"}</td><td><button onClick={()=>this.onDeleteClick(todos.id)}>del</button></td> </tr>;
