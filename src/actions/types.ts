@@ -1,8 +1,9 @@
 
 
-export enum ActionTypes {
+export const enum ActionTypes {
   fetchTodos,
   deleteTodos,
-  fetchApplications
+  fetchApplications,
+  addOneApplications
 }
 

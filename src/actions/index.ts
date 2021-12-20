@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {Dispatch} from 'redux';
-import {ActionTypes} from './types';
+import { ActionTypes } from './types';
 
 const url = 'https://mockend.com/tingzeng1208/rce-mock-backend/posts';
 
@@ -21,6 +21,11 @@ export interface FetchTodosAction {
 
 export interface DeleteTodoAction {
   type: ActionTypes.deleteTodos;
+  payload: number;
+}
+
+export interface AddApplicationAction {
+  type: ActionTypes.addOneApplications;
   payload: number;
 }
 
@@ -46,5 +51,12 @@ export const deleteTodos = (id: number): DeleteTodoAction =>{
   };
 }
 
+export const addAApplication = (id: number): AddApplicationAction =>{
+  return {
+    type: ActionTypes.addOneApplications,
+    payload: id
+  };
+}
 
+export type Action = FetchTodosAction | DeleteTodoAction | AddApplicationAction;
 export * from './types';
