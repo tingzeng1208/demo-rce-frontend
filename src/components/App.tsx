@@ -12,8 +12,16 @@ interface AppProps {
 
 class _App extends React.Component<AppProps>{
 
+  state = {showing: false};
+
   buttonClick= (): void => {
     this.props.fetchTodos();
+  }
+
+  newClick = (): void =>{
+
+    const {showing} = this.state;
+    this.setState({ showing: !showing });
   }
 
   onDeleteClick = (id: number): void =>{
@@ -31,7 +39,26 @@ class _App extends React.Component<AppProps>{
   
   render() {
       console.log(this.props.todos);
-      return <div><button onClick={this.buttonClick}>Get list</button>
+      const {showing} = this.state;
+      return <div><button onClick={this.buttonClick}>Get list</button>&nbsp;&nbsp;<button onClick={this.newClick}>New</button>
+      <div style={{ display: (showing ? 'block' : 'none') }}>
+        {/* <form  onSubmit={(e: React.SyntheticEvent) => {
+    e.preventDefault();
+    const target = e.target as typeof e.target & {
+      email: { value: string };
+      password: { value: string };
+    };
+    const email = target.email.value; // typechecks!
+    const password = target.password.value; // typechecks!
+    // etc...
+  }}> */}
+        <table>
+          <tr><td>Applicant name</td><td><input type='text' name='appName'></input></td></tr>
+          <tr><td>Status</td><td><input type='checkbox' name='status'></input></td></tr>
+          <tr><td><button type='submit'>Submit</button></td></tr>
+        </table>
+        {/* </form> */}
+      </div>
       <table>
         <tr><td>Applicant Name</td><td>Status</td><td>Action</td></tr>
       {this.renderList()}
