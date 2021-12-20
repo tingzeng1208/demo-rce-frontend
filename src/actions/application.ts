@@ -14,30 +14,33 @@ export interface FEMAApplication {
   status: boolean;
 }
 
-export interface FetchTodosAction {
+export interface FetchApplicationAction {
   type: ActionTypes.fetchTodos;
   payload: FEMAApplication[];
 }
 
-export interface DeleteTodoAction {
+export interface DeleteApplicationAction {
   type: ActionTypes.deleteTodos;
   payload: number;
 }
 
-export const fetchTodos = () => {
+export const fetchApplications = () => {
   return async (dispatch: Dispatch)=>{
 
       const response = await axios.get<FEMAApplication[]>(url);
-      dispatch<FetchTodosAction>({
+      dispatch<FetchApplicationAction>({
         type: ActionTypes.fetchTodos,
         payload: response.data
       });
   };
 };
 
-export const deleteTodos = (id: number): DeleteTodoAction =>{
+export const deleteApplications = (id: number): DeleteApplicationAction =>{
   return {
     type: ActionTypes.deleteTodos,
     payload: id
   };
 }
+
+
+export type Action = FetchApplicationAction | DeleteApplicationAction;
