@@ -63,8 +63,8 @@ class _App extends React.Component<AppProps>{
 
   onEditClick= (id: number): void =>{
 
-    const {showingDetail: showingDetail} = this.state;
-    this.setState({ showingDetail: !showingDetail, currentId: id });
+    const {showingEdit: showingEdit} = this.state;
+    this.setState({ showingEdit: !showingEdit, currentId: id });
   }
 
   renderList(): JSX.Element[] {
@@ -100,11 +100,52 @@ class _App extends React.Component<AppProps>{
     }
     
   }
+
+  renderEdit(): JSX.Element {
+    const application= this.props.todos.find(a=>a.id === this.state.currentId);
+    if (application !== undefined){
+      return <div>
+        <div>Application Information:</div>
+        <form onSubmit={(e: React.SyntheticEvent) => {
+        e.preventDefault();
+        const target = e.target as typeof e.target & {
+          appName: { value: string };
+          status: { checked: boolean };
+        };
+        
+        console.log(e.target);
+        const appName: string = target.appName.value; // typechecks!
+        const status: boolean = target.status.checked// typechecks! 
+        const newId: number = Math.floor(Math.random() * 9000)+1000;   
+        const application = this.props.todos.find(a=>a.id === this.state.currentId);
+        if (application!== undefined){
+          application.ApplicantName = appName;
+          application.status = status;
+        }
+        
+        console.log(application);
+        console.log(this.props.todos);
+        this.props.deleteTodos(-1);
+        this.newClick();
+      }}>
+        <div>Id: &nbsp;{application.id}</div>
+        <div>Applicant Name: &nbsp;<input type='text' name='appName' defaultValue={application.ApplicantName} contentEditable='true'></input></div>
+        <div>Application Status: &nbsp;<input type='checkbox' defaultChecked={application.status} name='status'></input></div>
+        <div><button type='submit'>Submit</button></div>
+        </form>
+        </div>
+    }
+    else{
+      return <div></div>;
+    }
+    
+  }
   
   render() {
       console.log(this.props.todos);
       const {showingNew: showingNew} = this.state;
       const {showingDetail: showingDetail} = this.state;
+      const {showingEdit: showingEdit} = this.state;
       return <div>
         <table><tr><td>
         <div style={div1style}>
@@ -154,7 +195,12 @@ class _App extends React.Component<AppProps>{
       <div style={{ display: (showingDetail ? 'inline-block' : 'none'),  width: '200',
   height: 'auto',
   alignSelf: 'flex-end'}}>{this.renderView()}</div>
-  </td></tr></table>
+  <div style={{ display: (showingEdit ? 'inline-block' : 'none'),  width: '200',
+  height: 'auto',
+  alignSelf: 'flex-end'}}>{this.renderEdit()}</div>
+  </td>
+  
+  </tr></table>
       </div>
       ;
   }
