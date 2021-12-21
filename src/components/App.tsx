@@ -1,6 +1,6 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { connect} from 'react-redux';
-import {FEMAApplication, fetchApplications,  deleteApplications, addAApplication } from '../actions';
+import {FEMAApplication, fetchApplications,  deleteApplications } from '../actions';
 import {StoreState } from '../reducers';
 import CSS from 'csstype';
 
@@ -10,19 +10,6 @@ const div1style : CSS.Properties  = {
     display: 'inline-block',
     height: 'auto'
 };
-
-const div2Style: CSSProperties = {
-  width: '200',
-  height: 'auto',
-  alignSelf: 'flex-end',
-  display: 'inline-block'
-  
-};
-
-const cellStyle : CSSProperties = {
-  verticalAlign: 'top'
-}
-
 
 interface AppProps {
   todos: FEMAApplication[];
@@ -93,6 +80,10 @@ class _App extends React.Component<AppProps>{
         <button onClick={()=>this.onEditClick(todos.id)}>Edit</button></td>
         </tr>;
     });
+    if (this.displayElements.length>0){
+    this.displayElements.unshift(
+      <tr><td>Applicant Name</td><td>Status</td><td>Action</td></tr>);
+    }
     return this.displayElements;
   }
 
@@ -207,9 +198,9 @@ class _App extends React.Component<AppProps>{
         </form>
       </div>
       <table>
-        <tr><td>Applicant Name</td><td>Status</td><td>Action</td></tr>
       {this.renderList()}
       </table>
+      
       </div>
       </td>
       <td style={{verticalAlign: 'top'}}>
