@@ -67,6 +67,11 @@ class _App extends React.Component<AppProps>{
     this.setState({ showingEdit: !showingEdit, currentId: id });
   }
 
+  EditClick = () : void => {
+    const {showingEdit: showingEdit} = this.state;
+    this.setState({ showingEdit: !showingEdit});
+  }
+
   renderList(): JSX.Element[] {
     // console.log('render now');
     this.displayElements= this.props.todos.map((todos: FEMAApplication) =>
@@ -123,10 +128,8 @@ class _App extends React.Component<AppProps>{
           application.status = status;
         }
         
-        console.log(application);
-        console.log(this.props.todos);
         this.props.deleteTodos(-1);
-        this.newClick();
+        this.EditClick();
       }}>
         <div>Id: &nbsp;{application.id}</div>
         <div>Applicant Name: &nbsp;<input type='text' name='appName' defaultValue={application.ApplicantName} contentEditable='true'></input></div>
