@@ -19,7 +19,7 @@ export interface FetchTodosAction {
   payload: FEMAApplication[];
 }
 
-export interface DeleteTodoAction {
+export interface DeleteApplicationAction {
   type: ActionTypes.deleteTodos;
   payload: number;
 }
@@ -44,7 +44,7 @@ export const fetchApplications = () => {
   };
 };
 
-export const deleteApplications = (id: number): DeleteTodoAction =>{
+export const deleteApplications = (id: number): DeleteApplicationAction =>{
   return {
     type: ActionTypes.deleteTodos,
     payload: id
@@ -58,5 +58,5 @@ export const addAApplication = (id: number): AddApplicationAction =>{
   };
 }
 
-export type Action = FetchTodosAction | DeleteTodoAction | AddApplicationAction;
+export type Action = FetchTodosAction | DeleteApplicationAction | AddApplicationAction;
 export * from './types';
