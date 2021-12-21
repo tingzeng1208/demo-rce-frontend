@@ -19,6 +19,10 @@ const div2Style: CSSProperties = {
   
 };
 
+const cellStyle : CSSProperties = {
+  verticalAlign: 'top'
+}
+
 
 interface AppProps {
   todos: FEMAApplication[];
@@ -57,13 +61,14 @@ class _App extends React.Component<AppProps>{
   }
 
   renderList(): JSX.Element[] {
-    console.log('render now');
+    // console.log('render now');
     this.displayElements= this.props.todos.map((todos: FEMAApplication) =>
 
     {
       return <tr><td>{todos.ApplicantName} </td><td>{todos.status? "Active": "Inactive"}</td><td>
         <button onClick={()=>this.onDeleteClick(todos.id)}>del</button>
-        <button onClick={()=>this.onViewClick(todos.id)}>View</button></td></tr>;
+        <button onClick={()=>this.onViewClick(todos.id)}>View</button></td>
+        </tr>;
     });
     return this.displayElements;
   }
@@ -92,6 +97,7 @@ class _App extends React.Component<AppProps>{
       const {showingNew: showingNew} = this.state;
       const {showingDetail: showingDetail} = this.state;
       return <div>
+        <table><tr><td>
         <div style={div1style}>
         <button onClick={this.buttonClick}>Get list</button>&nbsp;&nbsp;<button onClick={this.newClick}>New</button>
       <div style={{ display: (showingNew ? 'block' : 'none') }}>
@@ -134,9 +140,12 @@ class _App extends React.Component<AppProps>{
       {this.renderList()}
       </table>
       </div>
+      </td>
+      <td style={{verticalAlign: 'top'}}>
       <div style={{ display: (showingDetail ? 'inline-block' : 'none'),  width: '200',
   height: 'auto',
   alignSelf: 'flex-end'}}>{this.renderView()}</div>
+  </td></tr></table>
       </div>
       ;
   }
