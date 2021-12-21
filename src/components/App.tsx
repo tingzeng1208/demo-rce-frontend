@@ -140,7 +140,6 @@ class _App extends React.Component<AppProps>{
         console.log(e.target);
         const appName: string = target.appName.value; // typechecks!
         const status: boolean = target.status.checked// typechecks! 
-        const newId: number = Math.floor(Math.random() * 9000)+1000;   
         const application = this.props.todos.find(a=>a.id === this.state.currentId);
         if (application!== undefined){
           application.ApplicantName = appName;
