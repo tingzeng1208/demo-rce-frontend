@@ -9,7 +9,7 @@ export interface FEMAApplication {
   Address: string;
   State: string;
   email: string;
-  zip: number;
+  ZIP: number;
   ApplicantName: string;
   status: boolean;
 }
