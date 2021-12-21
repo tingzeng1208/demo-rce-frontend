@@ -15,7 +15,7 @@ export interface FEMAApplication {
 }
 
 export interface FetchTodosAction {
-  type: ActionTypes.fetchTodos;
+  type: ActionTypes.fetchApplications;
   payload: FEMAApplication[];
 }
 
@@ -38,7 +38,7 @@ export const fetchApplications = () => {
          }
       });
       dispatch<FetchTodosAction>({
-        type: ActionTypes.fetchTodos,
+        type: ActionTypes.fetchApplications,
         payload: response.data
       });
   };

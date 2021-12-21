@@ -5,7 +5,7 @@ import { ActionTypes } from '../actions/types';
 export const todoReducers = (state: FEMAApplication[] = [], action: Action) => {
 
   switch (action.type){
-    case ActionTypes.fetchTodos:
+    case ActionTypes.fetchApplications:
       return action.payload;
     case ActionTypes.deleteTodos:
       if (action.payload===-1){

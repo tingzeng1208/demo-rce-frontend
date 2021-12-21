@@ -152,7 +152,7 @@ class _App extends React.Component<AppProps>{
       }}>
         <div>Id: &nbsp;{application.id}</div>
         <div>Applicant Name: &nbsp;<input type='text' name='appName' value={this.state.appNameData} onChange={(e) => this.setState({appNameData: e.target.value})}></input></div>
-        <div>Application Status: &nbsp;<input type='checkbox' checked={this.state.statusData} name='status'  onChange={(e) => this.setState({statusData: e.target.value})}></input></div>
+        <div>Application Status: &nbsp;<input type='checkbox' checked={this.state.statusData} name='status'  onChange={(e) => this.setState({statusData: e.target.checked})}></input></div>
         <div><button type='submit'>Submit</button></div>
         </form>
         </div>
