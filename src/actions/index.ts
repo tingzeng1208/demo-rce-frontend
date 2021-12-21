@@ -14,7 +14,7 @@ export interface FEMAApplication {
   status: boolean;
 }
 
-export interface FetchTodosAction {
+export interface FetchApplicationsAction {
   type: ActionTypes.fetchApplications;
   payload: FEMAApplication[];
 }
@@ -37,7 +37,7 @@ export const fetchApplications = () => {
           limit: 20
          }
       });
-      dispatch<FetchTodosAction>({
+      dispatch<FetchApplicationsAction>({
         type: ActionTypes.fetchApplications,
         payload: response.data
       });
@@ -58,5 +58,5 @@ export const addAApplication = (id: number): AddApplicationAction =>{
   };
 }
 
-export type Action = FetchTodosAction | DeleteApplicationAction | AddApplicationAction;
+export type Action = FetchApplicationsAction | DeleteApplicationAction | AddApplicationAction;
 export * from './types';
