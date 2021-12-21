@@ -36,6 +36,8 @@ class _App extends React.Component<AppProps>{
     showingNew: false,
     showingDetail:false,
     showingEdit: false,
+    appNameData: '',
+    statusData: true,
     currentId: -1
   };
   displayElements: JSX.Element[] = [];
@@ -64,7 +66,15 @@ class _App extends React.Component<AppProps>{
   onEditClick= (id: number): void =>{
 
     const {showingEdit: showingEdit} = this.state;
+    console.log(`current id = ${id}`);
+
     this.setState({ showingEdit: !showingEdit, currentId: id });
+    const application= this.props.todos.find(a=>a.id === id);
+    console.log('onEditClick');
+    console.log(application);
+    if (application !== undefined){
+      this.setStateFor(application);
+    }
   }
 
   EditClick = () : void => {
@@ -87,6 +97,7 @@ class _App extends React.Component<AppProps>{
   }
 
   renderView(): JSX.Element {
+    console.log(`render view for id = ${ this.state.currentId}`);
     const application= this.props.todos.find(a=>a.id === this.state.currentId);
     if (application !== undefined){
       return <div>
@@ -106,8 +117,16 @@ class _App extends React.Component<AppProps>{
     
   }
 
+  setStateFor = (application: FEMAApplication):void =>{
+    this.setState({appNameData: application.ApplicantName});
+    this.setState({statusData: application.status});
+  }
   renderEdit(): JSX.Element {
+    
     const application= this.props.todos.find(a=>a.id === this.state.currentId);
+    console.log(`render edit for id = ${ this.state.currentId}`);
+    console.log(application);
+    
     if (application !== undefined){
       return <div>
         <div>Application Information:</div>
@@ -132,8 +151,8 @@ class _App extends React.Component<AppProps>{
         this.EditClick();
       }}>
         <div>Id: &nbsp;{application.id}</div>
-        <div>Applicant Name: &nbsp;<input type='text' name='appName' defaultValue={application.ApplicantName} contentEditable='true'></input></div>
-        <div>Application Status: &nbsp;<input type='checkbox' defaultChecked={application.status} name='status'></input></div>
+        <div>Applicant Name: &nbsp;<input type='text' name='appName' value={this.state.appNameData} onChange={(e) => this.setState({appNameData: e.target.value})}></input></div>
+        <div>Application Status: &nbsp;<input type='checkbox' checked={this.state.statusData} name='status'  onChange={(e) => this.setState({statusData: e.target.value})}></input></div>
         <div><button type='submit'>Submit</button></div>
         </form>
         </div>
