@@ -29,7 +29,7 @@ export interface AddApplicationAction {
   payload: number;
 }
 
-export const fetchTodos = () => {
+export const fetchApplications = () => {
   return async (dispatch: Dispatch)=>{
 
       const response = await axios.get<FEMAApplication[]>(url, {
@@ -44,7 +44,7 @@ export const fetchTodos = () => {
   };
 };
 
-export const deleteTodos = (id: number): DeleteTodoAction =>{
+export const deleteApplications = (id: number): DeleteTodoAction =>{
   return {
     type: ActionTypes.deleteTodos,
     payload: id

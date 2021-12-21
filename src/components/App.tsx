@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 import { connect} from 'react-redux';
-import {FEMAApplication, fetchTodos, deleteTodos, addAApplication } from '../actions';
+import {FEMAApplication, fetchApplications,  deleteApplications, addAApplication } from '../actions';
 import {StoreState } from '../reducers';
 import CSS from 'csstype';
 
@@ -27,7 +27,7 @@ const cellStyle : CSSProperties = {
 interface AppProps {
   todos: FEMAApplication[];
   fetchTodos: Function;
-  deleteTodos: typeof deleteTodos;
+  deleteTodos: typeof deleteApplications;
 }
 
 class _App extends React.Component<AppProps>{
@@ -35,6 +35,7 @@ class _App extends React.Component<AppProps>{
   state = {
     showingNew: false,
     showingDetail:false,
+    showingEdit: false,
     currentId: -1
   };
   displayElements: JSX.Element[] = [];
@@ -60,6 +61,12 @@ class _App extends React.Component<AppProps>{
     this.setState({ showingDetail: !showingDetail, currentId: id });
   }
 
+  onEditClick= (id: number): void =>{
+
+    const {showingDetail: showingDetail} = this.state;
+    this.setState({ showingDetail: !showingDetail, currentId: id });
+  }
+
   renderList(): JSX.Element[] {
     // console.log('render now');
     this.displayElements= this.props.todos.map((todos: FEMAApplication) =>
@@ -67,7 +74,8 @@ class _App extends React.Component<AppProps>{
     {
       return <tr><td>{todos.ApplicantName} </td><td>{todos.status? "Active": "Inactive"}</td><td>
         <button onClick={()=>this.onDeleteClick(todos.id)}>del</button>
-        <button onClick={()=>this.onViewClick(todos.id)}>View</button></td>
+        <button onClick={()=>this.onViewClick(todos.id)}>View</button>
+        <button onClick={()=>this.onEditClick(todos.id)}>Edit</button></td>
         </tr>;
     });
     return this.displayElements;
@@ -78,6 +86,7 @@ class _App extends React.Component<AppProps>{
     if (application !== undefined){
       return <div>
         <div>Details:</div>
+        <div>Id: &nbsp;{application.id}</div>
         <div>Applicant Name: &nbsp;{application.ApplicantName}</div>
         <div>Application Status: &nbsp;{application.status? 'Active' : 'Inactive'}</div>
         <div>Address: &nbsp;{application.Address}</div>
@@ -158,5 +167,5 @@ const mapStateToProps = (state: StoreState) => {
 
 export const App = connect(
   mapStateToProps, 
-  {fetchTodos, deleteTodos}
+  {fetchTodos: fetchApplications, deleteTodos: deleteApplications}
 )(_App);
