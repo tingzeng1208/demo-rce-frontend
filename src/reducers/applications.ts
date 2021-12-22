@@ -2,7 +2,7 @@
 import { FEMAApplication, FetchApplicationsAction, Action } from '../actions/index';
 import { ActionTypes } from '../actions/types';
 
-export const todoReducers = (state: FEMAApplication[] = [], action: Action) => {
+export const applicationReducers = (state: FEMAApplication[] = [], action: Action) => {
 
   switch (action.type){
     case ActionTypes.fetchApplications:

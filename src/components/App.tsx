@@ -12,7 +12,7 @@ const div1style : CSS.Properties  = {
 };
 
 interface AppProps {
-  todos: FEMAApplication[];
+  applications: FEMAApplication[];
   fetchApplications: Function;
   deleteApplications: typeof deleteApplications;
 }
@@ -56,7 +56,7 @@ class _App extends React.Component<AppProps>{
     console.log(`current id = ${id}`);
 
     this.setState({ showingEdit: !showingEdit, currentId: id });
-    const application= this.props.todos.find(a=>a.id === id);
+    const application= this.props.applications.find(a=>a.id === id);
     console.log('onEditClick');
     console.log(application);
     if (application !== undefined){
@@ -71,13 +71,13 @@ class _App extends React.Component<AppProps>{
 
   renderList(): JSX.Element[] {
     // console.log('render now');
-    this.displayElements= this.props.todos.map((todos: FEMAApplication) =>
+    this.displayElements= this.props.applications.map((applications: FEMAApplication) =>
 
     {
-      return <tr><td>{todos.ApplicantName} </td><td>{todos.status? "Active": "Inactive"}</td><td>
-        <button onClick={()=>this.onDeleteClick(todos.id)}>del</button>
-        <button onClick={()=>this.onViewClick(todos.id)}>View</button>
-        <button onClick={()=>this.onEditClick(todos.id)}>Edit</button></td>
+      return <tr><td>{applications.ApplicantName} </td><td>{applications.status? "Active": "Inactive"}</td><td>
+        <button onClick={()=>this.onDeleteClick(applications.id)}>del</button>
+        <button onClick={()=>this.onViewClick(applications.id)}>View</button>
+        <button onClick={()=>this.onEditClick(applications.id)}>Edit</button></td>
         </tr>;
     });
     if (this.displayElements.length>0){
@@ -89,7 +89,7 @@ class _App extends React.Component<AppProps>{
 
   renderView(): JSX.Element {
     console.log(`render view for id = ${ this.state.currentId}`);
-    const application= this.props.todos.find(a=>a.id === this.state.currentId);
+    const application= this.props.applications.find(a=>a.id === this.state.currentId);
     if (application !== undefined){
       return <div>
         <div>Details:</div>
@@ -129,8 +129,8 @@ class _App extends React.Component<AppProps>{
       status: status
     };
     console.log(application);
-    this.props.todos.unshift(application);
-    console.log(this.props.todos);
+    this.props.applications.unshift(application);
+    console.log(this.props.applications);
     this.displayElements.push(<tr><td>{application.ApplicantName}</td><td>{application.status? "Active": "Inactive"}</td><td><button onClick={()=>this.onDeleteClick(application.id)}>del</button><button onClick={()=>this.onViewClick(application.id)}>View</button></td> </tr>);
     this.props.deleteApplications(-1);
     this.newClick();
@@ -147,7 +147,7 @@ class _App extends React.Component<AppProps>{
     console.log(e.target);
     const appName: string = target.appName.value; // typechecks!
     const status: boolean = target.status.checked// typechecks! 
-    const application = this.props.todos.find(a=>a.id === this.state.currentId);
+    const application = this.props.applications.find(a=>a.id === this.state.currentId);
     if (application!== undefined){
       application.ApplicantName = appName;
       application.status = status;
@@ -163,7 +163,7 @@ class _App extends React.Component<AppProps>{
   
   renderEdit(): JSX.Element {
     
-    const application= this.props.todos.find(a=>a.id === this.state.currentId);
+    const application= this.props.applications.find(a=>a.id === this.state.currentId);
     console.log(`render edit for id = ${ this.state.currentId}`);
     console.log(application);
     
@@ -185,7 +185,7 @@ class _App extends React.Component<AppProps>{
   }
   
   render() {
-      console.log(this.props.todos);
+      console.log(this.props.applications);
       const {showingNew: showingNew} = this.state;
       const {showingDetail: showingDetail} = this.state;
       const {showingEdit: showingEdit} = this.state;
@@ -225,7 +225,7 @@ class _App extends React.Component<AppProps>{
 
 
 const mapStateToProps = (state: StoreState) => {
-  return {todos: state.todos};
+  return {applications: state.applications};
 }
 
 export const App = connect(

@@ -1,12 +1,12 @@
 import { combineReducers} from 'redux';
-import { todoReducers } from './todos';
+import { applicationReducers } from './applications';
 import { FEMAApplication } from  '../actions';
 
 export interface StoreState {
-  todos: FEMAApplication[]
+  applications: FEMAApplication[]
 }
 
 export const reducers = combineReducers<StoreState> (
-  {todos: todoReducers}
+  {applications: applicationReducers}
   
 );
