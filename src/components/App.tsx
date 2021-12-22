@@ -108,10 +108,60 @@ class _App extends React.Component<AppProps>{
     
   }
 
+  onNewSubmit = (e: React.FormEvent<HTMLFormElement>): void =>{
+    e.preventDefault();
+    const target = e.target as typeof e.target & {
+      appName: { value: string };
+      status: { checked: boolean };
+    };
+    
+    console.log(e.target);
+    const appName: string = target.appName.value; // typechecks!
+    const status: boolean = target.status.checked// typechecks! 
+    const newId: number = Math.floor(Math.random() * 9000)+1000;   
+    const application:FEMAApplication = 
+    {   id: newId,
+      Address: '123 main st',
+      State: 'virginia',
+      email: 'test@test.com',
+      ZIP: 22030,
+      ApplicantName: appName,
+      status: status
+    };
+    console.log(application);
+    this.props.todos.unshift(application);
+    console.log(this.props.todos);
+    this.displayElements.push(<tr><td>{application.ApplicantName}</td><td>{application.status? "Active": "Inactive"}</td><td><button onClick={()=>this.onDeleteClick(application.id)}>del</button><button onClick={()=>this.onViewClick(application.id)}>View</button></td> </tr>);
+    this.props.deleteTodos(-1);
+    this.newClick();
+  };
+
+  onEditSubmit = (e: React.FormEvent<HTMLFormElement>): void =>{
+    
+    e.preventDefault();
+    const target = e.target as typeof e.target & {
+      appName: { value: string };
+      status: { checked: boolean };
+    };
+    
+    console.log(e.target);
+    const appName: string = target.appName.value; // typechecks!
+    const status: boolean = target.status.checked// typechecks! 
+    const application = this.props.todos.find(a=>a.id === this.state.currentId);
+    if (application!== undefined){
+      application.ApplicantName = appName;
+      application.status = status;
+    }
+    
+    this.props.deleteTodos(-1);
+    this.EditClick();
+  }
+
   setStateFor = (application: FEMAApplication):void =>{
     this.setState({appNameData: application.ApplicantName});
     this.setState({statusData: application.status});
   }
+  
   renderEdit(): JSX.Element {
     
     const application= this.props.todos.find(a=>a.id === this.state.currentId);
@@ -121,25 +171,7 @@ class _App extends React.Component<AppProps>{
     if (application !== undefined){
       return <div>
         <div>Application Information:</div>
-        <form onSubmit={(e: React.SyntheticEvent) => {
-        e.preventDefault();
-        const target = e.target as typeof e.target & {
-          appName: { value: string };
-          status: { checked: boolean };
-        };
-        
-        console.log(e.target);
-        const appName: string = target.appName.value; // typechecks!
-        const status: boolean = target.status.checked// typechecks! 
-        const application = this.props.todos.find(a=>a.id === this.state.currentId);
-        if (application!== undefined){
-          application.ApplicantName = appName;
-          application.status = status;
-        }
-        
-        this.props.deleteTodos(-1);
-        this.EditClick();
-      }}>
+        <form onSubmit={this.onEditSubmit}>         
         <div>Id: &nbsp;{application.id}</div>
         <div>Applicant Name: &nbsp;<input type='text' name='appName' value={this.state.appNameData} onChange={(e) => this.setState({appNameData: e.target.value})}></input></div>
         <div>Application Status: &nbsp;<input type='checkbox' checked={this.state.statusData} name='status'  onChange={(e) => this.setState({statusData: e.target.checked})}></input></div>
@@ -163,33 +195,8 @@ class _App extends React.Component<AppProps>{
         <div style={div1style}>
         <button onClick={this.buttonClick}>Get list</button>&nbsp;&nbsp;<button onClick={this.newClick}>New</button>
       <div style={{ display: (showingNew ? 'block' : 'none') }}>
-            <form  onSubmit={(e: React.SyntheticEvent) => {
-        e.preventDefault();
-        const target = e.target as typeof e.target & {
-          appName: { value: string };
-          status: { checked: boolean };
-        };
-        
-        console.log(e.target);
-        const appName: string = target.appName.value; // typechecks!
-        const status: boolean = target.status.checked// typechecks! 
-        const newId: number = Math.floor(Math.random() * 9000)+1000;   
-        const application:FEMAApplication = 
-        {   id: newId,
-          Address: '123 main st',
-          State: 'virginia',
-          email: 'test@test.com',
-          ZIP: 22030,
-          ApplicantName: appName,
-          status: status
-        };
-        console.log(application);
-        this.props.todos.unshift(application);
-        console.log(this.props.todos);
-        this.displayElements.push(<tr><td>{application.ApplicantName}</td><td>{application.status? "Active": "Inactive"}</td><td><button onClick={()=>this.onDeleteClick(application.id)}>del</button><button onClick={()=>this.onViewClick(application.id)}>View</button></td> </tr>);
-        this.props.deleteTodos(-1);
-        this.newClick();
-      }}> 
+            <form  onSubmit={this.onNewSubmit}>
+              
         <table>
           <tr><td>Applicant name</td><td><input type='text' name='appName'></input></td></tr>
           <tr><td>Status</td><td><input type='checkbox' name='status'></input></td></tr>
@@ -210,8 +217,7 @@ class _App extends React.Component<AppProps>{
   <div style={{ display: (showingEdit ? 'inline-block' : 'none'),  width: '200',
   height: 'auto',
   alignSelf: 'flex-end'}}>{this.renderEdit()}</div>
-  </td>
-  
+  </td>  
   </tr></table>
       </div>
       ;
