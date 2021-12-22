@@ -13,8 +13,8 @@ const div1style : CSS.Properties  = {
 
 interface AppProps {
   todos: FEMAApplication[];
-  fetchTodos: Function;
-  deleteTodos: typeof deleteApplications;
+  fetchApplications: Function;
+  deleteApplications: typeof deleteApplications;
 }
 
 class _App extends React.Component<AppProps>{
@@ -30,7 +30,7 @@ class _App extends React.Component<AppProps>{
   displayElements: JSX.Element[] = [];
 
   buttonClick= (): void => {
-    this.props.fetchTodos();
+    this.props.fetchApplications();
   }
 
   newClick = (): void =>{
@@ -41,7 +41,7 @@ class _App extends React.Component<AppProps>{
 
   onDeleteClick = (id: number): void =>{
 
-    this.props.deleteTodos(id);
+    this.props.deleteApplications(id);
   }
 
   onViewClick= (id: number): void =>{
@@ -132,7 +132,7 @@ class _App extends React.Component<AppProps>{
     this.props.todos.unshift(application);
     console.log(this.props.todos);
     this.displayElements.push(<tr><td>{application.ApplicantName}</td><td>{application.status? "Active": "Inactive"}</td><td><button onClick={()=>this.onDeleteClick(application.id)}>del</button><button onClick={()=>this.onViewClick(application.id)}>View</button></td> </tr>);
-    this.props.deleteTodos(-1);
+    this.props.deleteApplications(-1);
     this.newClick();
   };
 
@@ -151,9 +151,8 @@ class _App extends React.Component<AppProps>{
     if (application!== undefined){
       application.ApplicantName = appName;
       application.status = status;
-    }
-    
-    this.props.deleteTodos(-1);
+    }    
+    this.props.deleteApplications(-1);
     this.EditClick();
   }
 
@@ -231,5 +230,5 @@ const mapStateToProps = (state: StoreState) => {
 
 export const App = connect(
   mapStateToProps, 
-  {fetchTodos: fetchApplications, deleteTodos: deleteApplications}
+  {fetchApplications, deleteApplications}
 )(_App);
