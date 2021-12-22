@@ -20,7 +20,7 @@ export interface FetchApplicationsAction {
 }
 
 export interface DeleteApplicationAction {
-  type: ActionTypes.deleteTodos;
+  type: ActionTypes.deleteApplications;
   payload: number;
 }
 
@@ -46,7 +46,7 @@ export const fetchApplications = () => {
 
 export const deleteApplications = (id: number): DeleteApplicationAction =>{
   return {
-    type: ActionTypes.deleteTodos,
+    type: ActionTypes.deleteApplications,
     payload: id
   };
 }

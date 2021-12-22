@@ -7,7 +7,7 @@ export const todoReducers = (state: FEMAApplication[] = [], action: Action) => {
   switch (action.type){
     case ActionTypes.fetchApplications:
       return action.payload;
-    case ActionTypes.deleteTodos:
+    case ActionTypes.deleteApplications:
       if (action.payload===-1){
         return state.filter((todo: FEMAApplication) => todo.id !== action.payload || todo.id === action.payload);
       }

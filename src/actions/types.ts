@@ -2,7 +2,7 @@
 
 export const enum ActionTypes {
   fetchApplications,
-  deleteTodos,
+  deleteApplications,
   addOneApplications
 }
 
