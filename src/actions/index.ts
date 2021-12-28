@@ -1,17 +1,20 @@
 import axios from 'axios';
 import {Dispatch} from 'redux';
 import { ActionTypes } from './types';
+import { url } from '../components/ApiSync';
 
-const url = 'https://mockend.com/tingzeng1208/rce-mock-backend/posts';
+// const url = 'https://mockend.com/tingzeng1208/rce-mock-backend/posts';
+
+
 
 export interface FEMAApplication {
-  id: number;
-  Address: string;
-  State: string;
-  email: string;
-  ZIP: number;
-  ApplicantName: string;
-  status: boolean;
+  id?: number;
+  Address?: string;
+  State?: string;
+  email?: string;
+  ZIP?: number;
+  ApplicantName?: string;
+  status?: boolean;
 }
 
 export interface FetchApplicationsAction {

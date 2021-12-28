@@ -1,9 +1,12 @@
 import React from 'react';
 import { connect} from 'react-redux';
-import {FEMAApplication, fetchApplications,  deleteApplications } from '../actions';
+import {FEMAApplication, fetchApplications,  deleteApplications, addAApplication } from '../actions';
 import {StoreState } from '../reducers';
 import CSS from 'csstype';
+import { ApiSync } from './ApiSync';
+import { AxiosResponse } from 'axios';
 
+export const url = 'http://localhost:5001/applications';
 
 const div1style : CSS.Properties  = {
     width: '600',
@@ -27,6 +30,9 @@ class _App extends React.Component<AppProps>{
     statusData: true,
     currentId: -1
   };
+
+  public apiSync: ApiSync<FEMAApplication> = new ApiSync<FEMAApplication>(url);
+
   displayElements: JSX.Element[] = [];
 
   buttonClick= (): void => {
@@ -119,8 +125,9 @@ class _App extends React.Component<AppProps>{
     const appName: string = target.appName.value; // typechecks!
     const status: boolean = target.status.checked// typechecks! 
     const newId: number = Math.floor(Math.random() * 9000)+1000;   
+    // const application: FEMAApplication = {};
     const application:FEMAApplication = 
-    {   id: newId,
+    {   
       Address: '123 main st',
       State: 'virginia',
       email: 'test@test.com',
@@ -131,6 +138,12 @@ class _App extends React.Component<AppProps>{
     console.log(application);
     this.props.applications.unshift(application);
     console.log(this.props.applications);
+    this.apiSync.save(application).then((response: AxiosResponse): void =>{
+        console.log(`save success for ${application} with response ${response.data}`);
+        application.id = response.data.id;
+    }).catch(()=>{
+      console.log(`save error for application ${application}`);
+    });
     this.displayElements.push(<tr><td>{application.ApplicantName}</td><td>{application.status? "Active": "Inactive"}</td><td><button onClick={()=>this.onDeleteClick(application.id)}>del</button><button onClick={()=>this.onViewClick(application.id)}>View</button></td> </tr>);
     this.props.deleteApplications(-1);
     this.newClick();
