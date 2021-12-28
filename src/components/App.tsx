@@ -45,22 +45,32 @@ class _App extends React.Component<AppProps>{
     this.setState({ showingNew: !showingNew });
   }
 
-  onDeleteClick = (id: number): void =>{
+  onDeleteClick = (id: number | undefined): void =>{
 
+    if (!id) return;
+    
     this.props.deleteApplications(id);
+    this.apiSync.delete(id).then((response:AxiosResponse)=>{
+      console.log(`successfully delete ${id}`);
+      console.log(response);
+    }).catch((event)=>{
+      console.log(`error at deleting id: ${id}`);
+      console.log(event);
+    })
   }
 
-  onViewClick= (id: number): void =>{
+  onViewClick= (id: number  | undefined): void =>{
 
     const {showingDetail: showingDetail} = this.state;
     this.setState({ showingDetail: !showingDetail, currentId: id });
   }
 
-  onEditClick= (id: number): void =>{
+  onEditClick= (id: number  | undefined): void =>{
 
     const {showingEdit: showingEdit} = this.state;
     console.log(`current id = ${id}`);
 
+    
     this.setState({ showingEdit: !showingEdit, currentId: id });
     const application= this.props.applications.find(a=>a.id === id);
     console.log('onEditClick');
@@ -164,6 +174,13 @@ class _App extends React.Component<AppProps>{
     if (application!== undefined){
       application.ApplicantName = appName;
       application.status = status;
+      console.log(`edit application id: ${application.id}`);
+      this.apiSync.save(application).then((response: AxiosResponse): void =>{
+        console.log(`edit success for ${application} with response ${response.data}`);
+        application.id = response.data.id;
+    }).catch(()=>{
+      console.log(`edit error for application ${application}`);
+    });
     }    
     this.props.deleteApplications(-1);
     this.EditClick();
