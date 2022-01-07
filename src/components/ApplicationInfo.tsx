@@ -1,4 +1,7 @@
 import {FEMAApplication} from '../actions';
+import { Button } from '@trussworks/react-uswds';
+import '@trussworks/react-uswds/lib/uswds.css';
+import '@trussworks/react-uswds/lib/index.css';
 
 export interface ApplicationInfoInterface extends FEMAApplication  
 {  
@@ -15,8 +18,8 @@ export const ApplicationInfo = ({id,
   ApplicantName,
   status, delAction, viewAction, editAction}:ApplicationInfoInterface)  =>  {
   return <table><tbody><tr role="contentinfo"><td>{ApplicantName} </td><td>{status? "Active": "Inactive"}</td><td>
-  <button onClick={delAction}>Del</button>
-  <button onClick={viewAction}>View</button>
-  <button onClick={editAction}>Edit</button></td>
+  <Button type="button" size='small' onClick={delAction}>Del</Button>
+  <Button type="button" size='small' onClick={viewAction}>View</Button>
+  <Button type="button" size='small' onClick={editAction}>Edit</Button></td>
   </tr></tbody></table>;
 };

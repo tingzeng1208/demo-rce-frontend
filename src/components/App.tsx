@@ -5,7 +5,9 @@ import {StoreState } from '../reducers';
 import CSS from 'csstype';
 import { ApiSync } from './ApiSync';
 import { AxiosResponse } from 'axios';
-import {ApplicationInfo} from './ApplicationInfo';
+import {ApplicationInfo, ApplicationInfoInterface} from './ApplicationInfo';
+import { ApplicationList } from './ApplicationList';
+import { ViewBox} from './ViewBox';
 
 export const url = 'http://localhost:5001/applications';
 // export const url = 'http://localhost:5001/applications';
@@ -87,9 +89,26 @@ export class _App extends React.Component<AppProps>{
     this.setState({ showingEdit: !showingEdit});
   }
 
-  renderList(): JSX.Element[] {
+  renderList(){
     // console.log('render now');
     if (this.props && this.props.applications){
+
+      // const elementList: ApplicationInfoInterface[] = this.props.applications.map((application: FEMAApplication)=>
+      // { 
+      //   const model: ApplicationInfoInterface =
+      //   {
+      //     "Address": "YL40B8Ngz2",
+      //     "ApplicantName": "DWrXltczwi-123",
+      //     "State": "BXSYxysDG9",
+      //     "ZIP": 43229,
+      //     "email": "lsjfbx@effrs.wx",
+      //     "id": 3,
+      //     "status": true
+      //   };
+      //   return model;
+      // }
+
+      //   );
       this.displayElements= this.props.applications.map((applications: FEMAApplication) =>
 
       {
@@ -124,16 +143,24 @@ export class _App extends React.Component<AppProps>{
     }
     const application= this.props.applications.find(a=>a.id === this.state.currentId);
     if (application !== undefined){
-      return <div>
-        <div>Details:</div>
-        <div>Id: &nbsp;{application.id}</div>
-        <div>Applicant Name: &nbsp;{application.ApplicantName}</div>
-        <div>Application Status: &nbsp;{application.status? 'Active' : 'Inactive'}</div>
-        <div>Address: &nbsp;{application.Address}</div>
-        <div>Email: &nbsp;{application.email}</div>
-        <div>State: &nbsp;{application.State}</div>
-        <div>Zip: &nbsp;{application.ZIP}</div>
-        </div>
+      // return <div>
+      //   <div>Details:</div>
+      //   <div>Id: &nbsp;{application.id}</div>
+      //   <div>Applicant Name: &nbsp;{application.ApplicantName}</div>
+      //   <div>Application Status: &nbsp;{application.status? 'Active' : 'Inactive'}</div>
+      //   <div>Address: &nbsp;{application.Address}</div>
+      //   <div>Email: &nbsp;{application.email}</div>
+      //   <div>State: &nbsp;{application.State}</div>
+      //   <div>Zip: &nbsp;{application.ZIP}</div>
+      //   </div>
+      return <ViewBox id ={application.id} 
+        ApplicantName={application.ApplicantName} 
+        Address={application.Address}  
+        email = {application.email}
+        State={application.State}
+        ZIP = {application.ZIP}
+        status= {application.status}
+      />;
     }
     else{
       return <div></div>;

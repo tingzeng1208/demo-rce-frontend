@@ -1,5 +1,5 @@
 import { ApplicationInfo, ApplicationInfoInterface } from "../components/ApplicationInfo";
-import { render, screen } from '@testing-library/react';
+import { render, screen, RenderResult } from '@testing-library/react';
 import '@testing-library/jest-dom'
 
 
@@ -13,25 +13,25 @@ const applications: ApplicationInfoInterface = {
 "status": true
 };
 
-const renderAnApplication = (application: ApplicationInfoInterface): ReactResult =>{
+const renderAnApplication = (application: ApplicationInfoInterface): RenderResult =>
   render(<ApplicationInfo ApplicantName={application.ApplicantName} 
     status={application.status} 
     delAction={()=>console.log(application.id)}
     viewAction={()=>console.log(application.id)}
     editAction={()=>console.log(application.id)} />);
-}
 
-test("Render ApplicationInfo correctly", ()=>{
 
-    render(<ApplicationInfo ApplicantName={applications.ApplicantName} 
-      status={applications.status} 
-      delAction={()=>console.log(applications.id)}
-      viewAction={()=>console.log(applications.id)}
-      editAction={()=>console.log(applications.id)} />);
+// test("Render ApplicationInfo correctly", ()=>{
+
+//     render(<ApplicationInfo ApplicantName={applications.ApplicantName} 
+//       status={applications.status} 
+//       delAction={()=>console.log(applications.id)}
+//       viewAction={()=>console.log(applications.id)}
+//       editAction={()=>console.log(applications.id)} />);
     
-    const rendered = screen.getByRole("contentinfo");
-    expect(rendered).toBeInTheDocument();
-});
+//     const rendered = screen.getByRole("contentinfo");
+//     expect(rendered).toBeInTheDocument();
+// });
 
 describe("test ApplicationInfo", ()=>{
   it("Render ApplicationInfo with Delete buttons", ()=>{

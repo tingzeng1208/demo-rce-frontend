@@ -5,6 +5,7 @@
   "dependencies": {
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@trussworks/react-uswds": "^2.5.0",
     "@types/jest": "^26.0.24",
     "@types/node": "^12.20.26",
     "@types/react": "^17.0.24",
