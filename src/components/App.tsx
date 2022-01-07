@@ -5,8 +5,10 @@ import {StoreState } from '../reducers';
 import CSS from 'csstype';
 import { ApiSync } from './ApiSync';
 import { AxiosResponse } from 'axios';
+import {ApplicationInfo} from './ApplicationInfo';
 
 export const url = 'http://localhost:5001/applications';
+// export const url = 'http://localhost:5001/applications';
 
 const div1style : CSS.Properties  = {
     width: '600',
@@ -14,13 +16,13 @@ const div1style : CSS.Properties  = {
     height: 'auto'
 };
 
-interface AppProps {
+export interface AppProps {
   applications: FEMAApplication[];
   fetchApplications: Function;
   deleteApplications: typeof deleteApplications;
 }
 
-class _App extends React.Component<AppProps>{
+export class _App extends React.Component<AppProps>{
 
   state = {
     showingNew: false,
@@ -87,24 +89,39 @@ class _App extends React.Component<AppProps>{
 
   renderList(): JSX.Element[] {
     // console.log('render now');
-    this.displayElements= this.props.applications.map((applications: FEMAApplication) =>
+    if (this.props && this.props.applications){
+      this.displayElements= this.props.applications.map((applications: FEMAApplication) =>
 
-    {
-      return <tr><td>{applications.ApplicantName} </td><td>{applications.status? "Active": "Inactive"}</td><td>
-        <button onClick={()=>this.onDeleteClick(applications.id)}>del</button>
-        <button onClick={()=>this.onViewClick(applications.id)}>View</button>
-        <button onClick={()=>this.onEditClick(applications.id)}>Edit</button></td>
-        </tr>;
-    });
-    if (this.displayElements.length>0){
-    this.displayElements.unshift(
-      <tr><td>Applicant Name</td><td>Status</td><td>Action</td></tr>);
+      {
+        // return <tr><td>{applications.ApplicantName} </td><td>{applications.status? "Active": "Inactive"}</td><td>
+        //   <button onClick={()=>this.onDeleteClick(applications.id)}>Del</button>
+        //   <button onClick={()=>this.onViewClick(applications.id)}>View</button>
+        //   <button onClick={()=>this.onEditClick(applications.id)}>Edit</button></td>
+        //   </tr>;
+        return <ApplicationInfo ApplicantName={applications.ApplicantName} 
+        status={applications.status} 
+        delAction={()=>this.onDeleteClick(applications.id)}
+        viewAction={()=>this.onViewClick(applications.id)}
+        editAction={()=>this.onEditClick(applications.id)}
+        />;
+      });
+      if (this.displayElements.length>0){
+      this.displayElements.unshift(
+        <tr><td>Applicant Name</td><td>Status</td><td>Action</td></tr>);
+      }
+      return this.displayElements;
     }
-    return this.displayElements;
+    else{
+      return [];
+    }
+    
   }
 
   renderView(): JSX.Element {
-    console.log(`render view for id = ${ this.state.currentId}`);
+    // console.log(`render view for id = ${ this.state.currentId}`);
+    if (!this.props || !this.props.applications){
+      return <div></div>;
+    }
     const application= this.props.applications.find(a=>a.id === this.state.currentId);
     if (application !== undefined){
       return <div>
@@ -192,7 +209,9 @@ class _App extends React.Component<AppProps>{
   }
   
   renderEdit(): JSX.Element {
-    
+    if (!this.props || !this.props.applications){
+      return <div></div>;
+    }
     const application= this.props.applications.find(a=>a.id === this.state.currentId);
     console.log(`render edit for id = ${ this.state.currentId}`);
     console.log(application);
@@ -215,7 +234,7 @@ class _App extends React.Component<AppProps>{
   }
   
   render() {
-      console.log(this.props.applications);
+      // console.log(this.props.applications);
       const {showingNew: showingNew} = this.state;
       const {showingDetail: showingDetail} = this.state;
       const {showingEdit: showingEdit} = this.state;

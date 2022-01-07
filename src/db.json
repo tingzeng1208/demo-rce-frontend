@@ -1,31 +1,13 @@
 {
   "applications": [
     {
-      "Address": "iRRBQH4mDe",
-      "ApplicantName": "YADtgZHpt7",
-      "State": "Gx9QgqaQqZ",
-      "ZIP": 24394,
-      "email": "xvlbzb@icmra.jw",
-      "id": 1,
-      "status": true
-    },
-    {
-      "Address": "IdkFugItnW",
-      "ApplicantName": "CSx4A4JrOm",
-      "State": "nAfHkXOzAq",
-      "ZIP": 31393,
-      "email": "hthctux@xkqfd.af",
-      "id": 2,
-      "status": false
-    },
-    {
       "Address": "YL40B8Ngz2",
-      "ApplicantName": "DWrXltczwi",
+      "ApplicantName": "DWrXltczwi-123",
       "State": "BXSYxysDG9",
       "ZIP": 43229,
       "email": "lsjfbx@effrs.wx",
       "id": 3,
-      "status": false
+      "status": true
     },
     {
       "Address": "wNHVmtsmLa",
@@ -89,15 +71,6 @@
       "email": "yixjr@cctns.wy",
       "id": 10,
       "status": true
-    },
-    {
-      "Address": "123 main st",
-      "State": "virginia",
-      "email": "test@test.com",
-      "ZIP": 22030,
-      "ApplicantName": "ting zeng-54321",
-      "status": true,
-      "id": 11
     }
   ]
 }
