@@ -1,4 +1,4 @@
-import {ApplicationInfo, ApplicationInfoInterface} from './ApplicationInfo';
+import {ApplicationInfo, ApplicationInfoInterface} from '../story/ApplicationInfo';
 
 export const ApplicationList = (applications: ApplicationInfoInterface[]): JSX.Element[] =>{
   return applications.map((application:ApplicationInfoInterface)=>

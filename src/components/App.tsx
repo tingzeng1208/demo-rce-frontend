@@ -5,9 +5,9 @@ import {StoreState } from '../reducers';
 import CSS from 'csstype';
 import { ApiSync } from './ApiSync';
 import { AxiosResponse } from 'axios';
-import {ApplicationInfo, ApplicationInfoInterface} from './ApplicationInfo';
+import {ApplicationInfo, ApplicationInfoInterface} from '../story/ApplicationInfo';
 import { ApplicationList } from './ApplicationList';
-import { ViewBox} from './ViewBox';
+import { ViewBox} from '../story/ViewBox';
 
 export const url = 'http://localhost:5001/applications';
 // export const url = 'http://localhost:5001/applications';

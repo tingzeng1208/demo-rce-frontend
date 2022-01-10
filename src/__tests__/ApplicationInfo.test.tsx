@@ -1,4 +1,4 @@
-import { ApplicationInfo, ApplicationInfoInterface } from "../components/ApplicationInfo";
+import { ApplicationInfo, ApplicationInfoInterface } from "../story/ApplicationInfo";
 import { render, screen, RenderResult } from '@testing-library/react';
 import '@testing-library/jest-dom'
 
