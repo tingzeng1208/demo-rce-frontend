@@ -8,6 +8,7 @@ import { AxiosResponse } from 'axios';
 import {ApplicationInfo, ApplicationInfoInterface} from '../story/ApplicationInfo';
 import { ApplicationList } from './ApplicationList';
 import { ViewBox} from '../story/ViewBox';
+import { Formbox } from '../story/FormView';
 
 export const url = 'http://localhost:5001/applications';
 // export const url = 'http://localhost:5001/applications';
@@ -270,14 +271,15 @@ export class _App extends React.Component<AppProps>{
         <div style={div1style}>
         <button onClick={this.buttonClick}>Get list</button>&nbsp;&nbsp;<button onClick={this.newClick}>New</button>
       <div style={{ display: (showingNew ? 'block' : 'none') }}>
-            <form  onSubmit={this.onNewSubmit}>
+            {/* <form  onSubmit={this.onNewSubmit}>
               
         <table>
           <tr><td>Applicant name</td><td><input type='text' name='appName'></input></td></tr>
           <tr><td>Status</td><td><input type='checkbox' name='status'></input></td></tr>
           <tr><td><button type='submit'>Submit</button></td></tr>
         </table>
-        </form>
+        </form> */}
+        <Formbox onSubmit={this.onNewSubmit} children=''/>
       </div>
       <table>
       {this.renderList()}
