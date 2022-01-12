@@ -9,6 +9,7 @@ import {ApplicationInfo, ApplicationInfoInterface} from '../story/ApplicationInf
 import { ApplicationList } from './ApplicationList';
 import { ViewBox} from '../story/ViewBox';
 import { Formbox } from '../story/FormView';
+import { EditForm } from '../story/EditBox';
 
 export const url = 'http://localhost:5001/applications';
 // export const url = 'http://localhost:5001/applications';
@@ -259,20 +260,33 @@ export class _App extends React.Component<AppProps>{
     console.log(application);
     
     if (application !== undefined){
+      console.log(`state applicant name is ${this.state.appNameData} and status is ${this.state.statusData}`);
       return <div>
         <div>Application Information:</div>
+        
         {/* <form onSubmit={this.onEditSubmit}>         
         <div>Id: &nbsp;{application.id}</div>
         <div>Applicant Name: &nbsp;<input type='text' name='appName' value={this.state.appNameData} onChange={(e) => this.setState({appNameData: e.target.value})}></input></div>
         <div>Application Status: &nbsp;<input type='checkbox' checked={this.state.statusData} name='status'  onChange={(e) => this.setState({statusData: e.target.checked})}></input></div>
         <div><button type='submit'>Submit</button></div> */}
-        <form onSubmit={this.onEditSubmit}>         
+        {/* <form onSubmit={this.onEditSubmit}>         
         <div>Id: &nbsp;{application.id}</div>
         <div>Applicant Name: &nbsp;<input type='text' name='appName' value={this.state.appNameData} onChange={this.onAppNameChange}></input></div>
         
         <div>Application Status: &nbsp;<input type='checkbox' checked={this.state.statusData} name='status'  onChange={this.onStatusChange}></input></div>
         <div><button type='submit'>Submit</button></div>
-        </form>
+        </form> */}
+        <EditForm 
+        ApplicantName={this.state.appNameData} 
+        Address={application.Address}  
+        email = {application.email}
+        State={application.State}
+        ZIP = {application.ZIP}
+        status= {this.state.statusData}
+        onSubmit={this.onEditSubmit} 
+        onStatusChange={this.onStatusChange}
+        onAppNameChange={this.onAppNameChange}
+        children=''/>
         </div>
     }
     else{
