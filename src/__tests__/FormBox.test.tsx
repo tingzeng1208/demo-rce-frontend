@@ -4,6 +4,7 @@ import '@testing-library/jest-dom'
 import { ViewBox } from "../story/ViewBox";
 import { FEMAApplication } from "../actions";
 import { Formbox } from "../story/FormView";
+import React from "react";
 
 
 describe("test form box", ()=>{
@@ -26,8 +27,9 @@ describe("test form box", ()=>{
 
   it("submit button would fire", ()=>{    
     
-    const onSubmit = jest.fn();
+    const onSubmit = jest.fn((e)=>e.preventDefault());
     render(<Formbox onSubmit={onSubmit} children=''/>);
+    window.HTMLFormElement.prototype.submit = () => {};
     const submitButton = screen.getByText('Submit');
     fireEvent.click(submitButton);
     expect(onSubmit).toBeCalledTimes(1);
