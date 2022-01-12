@@ -235,6 +235,20 @@ export class _App extends React.Component<AppProps>{
     this.setState({appNameData: application.ApplicantName});
     this.setState({statusData: application.status});
   }
+
+  onStatusChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
+
+    console.log(`changed status to ${e.target.checked}`);
+    this.setState({statusData: e.target.checked});
+
+  }
+
+  onAppNameChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
+
+    console.log(`changed app name to ${e.target.value}`);
+    this.setState({appNameData: e.target.value});
+
+  }
   
   renderEdit(): JSX.Element {
     if (!this.props || !this.props.applications){
@@ -247,10 +261,16 @@ export class _App extends React.Component<AppProps>{
     if (application !== undefined){
       return <div>
         <div>Application Information:</div>
-        <form onSubmit={this.onEditSubmit}>         
+        {/* <form onSubmit={this.onEditSubmit}>         
         <div>Id: &nbsp;{application.id}</div>
         <div>Applicant Name: &nbsp;<input type='text' name='appName' value={this.state.appNameData} onChange={(e) => this.setState({appNameData: e.target.value})}></input></div>
         <div>Application Status: &nbsp;<input type='checkbox' checked={this.state.statusData} name='status'  onChange={(e) => this.setState({statusData: e.target.checked})}></input></div>
+        <div><button type='submit'>Submit</button></div> */}
+        <form onSubmit={this.onEditSubmit}>         
+        <div>Id: &nbsp;{application.id}</div>
+        <div>Applicant Name: &nbsp;<input type='text' name='appName' value={this.state.appNameData} onChange={this.onAppNameChange}></input></div>
+        
+        <div>Application Status: &nbsp;<input type='checkbox' checked={this.state.statusData} name='status'  onChange={this.onStatusChange}></input></div>
         <div><button type='submit'>Submit</button></div>
         </form>
         </div>
