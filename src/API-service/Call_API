@@ -1,0 +1,20 @@
+import {CALL_API} from 'redux-api-middleware';
+import {
+COMMITMENT_GET_REQUEST,
+COMMITMENT_GET_SUCCESS,
+COMMITMENT_GET_FAILURE,
+} from 'common/types';
+import {ENDPOINT_COMMITMENT} from 'common/endpoints';
+import {commonJwtHeader} from 'common/utils';
+export default {
+getCommitment: (token, commitmentId) => {
+return {
+[CALL_API]: {
+endpoint: `${ENDPOINT_COMMITMENT}${commitmentId}`,
+headers: commonJwtHeader(),
+method: 'GET',
+types: [COMMITMENT_GET_REQUEST, COMMITMENT_GET_SUCCESS, COMMITMENT_GET_FAILURE],
+},
+};
+},
+};
