@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Page } from './Page';
 import * as HeaderStories from './Header/Header.stories';
 
+
 export default {
   title: 'Example/Page',
   component: Page,
