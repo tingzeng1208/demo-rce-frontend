@@ -25,7 +25,7 @@ interface ButtonProps {
 }
 
 /**
- * Primary UI component for user interaction
+ * Primary button component for RCE
  */
 export const Button = ({
   primary = false,
