@@ -10,7 +10,7 @@ const button1style : CSS.Properties  = {
   display: 'inline-block',
   margin: '1px',
   height: '30px',
-  fontSize: 'small' ,
+  fontSize: 'small',
   alignContent: 'left',
   alignItems: 'left',
   textAlign: 'left'
