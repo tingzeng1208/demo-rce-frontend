@@ -24,6 +24,7 @@
     "redux": "^4.1.1",
     "redux-api-middleware": "^3.2.1",
     "redux-thunk": "^2.3.0",
+    "sass": "^1.49.0",
     "typescript": "^4.4.3",
     "web-vitals": "^1.1.2"
   },

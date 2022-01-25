@@ -1,7 +1,7 @@
-import { ApplicationInfoInterface } from "../story/ApplicationInfo";
+import { ApplicationInfoInterface } from "../components/ApplicationInfo";
 import { render, screen, RenderResult } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { ViewBox } from "../story/ViewBox";
+import { ViewBox } from "../components/ViewBox";
 import { FEMAApplication } from "../actions";
 
 const application: ApplicationInfoInterface = {
