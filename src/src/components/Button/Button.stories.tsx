@@ -1,31 +1,58 @@
 import React from 'react'
 import { Button } from './Button'
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 export default {
   title: 'Components/Button',
   component: Button,
-  parameters: {
-    docs: {
-      description: {
-        component: `
-### USWDS 2.0 Button component
-
-Source: https://designsystem.digital.gov/components/button/
-`,
-      },
-    },
+  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
+  argTypes: {
+    onClick: {action: 'clicked'},
+    type: {value: 'button'},
+    backgroundColor: { control: 'color' },
   },
-}
+} as ComponentMeta<typeof Button>;
 
-export const defaultButton = (): React.ReactElement => (
-  <Button type="button">Click Me</Button>
-)
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} >Click Me</Button>;
 
-export const secondary = (): React.ReactElement => (
-  <Button type="button" secondary>
-    Click Me
-  </Button>
-)
+// export default {
+//   title: 'Components/Button',
+//   component: Button,
+//   parameters: {
+//     docs: {
+//       description: {
+//         component: `
+// ### USWDS 2.0 Button component
+
+// // Source: https://designsystem.digital.gov/components/button/
+// // `,
+//       },
+//     },
+//   },
+// }
+
+// export const defaultButton = (): React.ReactElement => (
+//   <Button type="button">Click Me</Button>
+// )
+
+// export const secondary = (): React.ReactElement => (
+//   <Button type="button" secondary>
+//     Click Me
+//   </Button>
+// )
+
+export const defaultButton = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+defaultButton.args = {
+  secondary: false,
+  type: 'button'
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  secondary: true
+};
 
 export const accentCool = (): React.ReactElement => (
   <Button type="button" accentStyle="cool">
