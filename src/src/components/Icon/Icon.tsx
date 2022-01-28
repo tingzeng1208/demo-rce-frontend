@@ -10,7 +10,9 @@ interface USWDSIconProps {
 
 export type IconProps = USWDSIconProps & JSX.IntrinsicElements['svg']
 
-export function makeUSWDSIcon(Component: React.ComponentType<IconProps>) {
+// export function makeUSWDSIcon(Component: React.ComponentType<IconProps>) {
+
+export function makeUSWDSIcon(Component: string) {
   return (props: IconProps): JSX.Element => {
     const {
       size,
@@ -35,6 +37,7 @@ export function makeUSWDSIcon(Component: React.ComponentType<IconProps>) {
       ...iconProps,
     }
 
-    return <Component {...finalProps} />
+    return <div />
+    // return <Component {...finalProps} />
   }
 }

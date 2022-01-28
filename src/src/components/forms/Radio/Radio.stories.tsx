@@ -2,7 +2,7 @@ import React from 'react'
 import { Radio } from './Radio'
 
 export default {
-  title: 'Components/Radio buttons',
+  title: 'Components/Form/Radio buttons',
   component: Radio,
   parameters: {
     docs: {

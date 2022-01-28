@@ -5,7 +5,7 @@ import { FormGroup } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
 
 export default {
-  title: 'Components/Form/Form/CharacterCount',
+  title: 'Components/Form/CharacterCount',
   parameters: {
     docs: {
       description: {
@@ -67,10 +67,13 @@ const withCustomCharacterCount = (): React.ReactElement => {
   const customEmojiMessage = (count: number, maxCount: number): string => {
     const remainingCount = maxCount - count
     if (remainingCount >= 0) return `${remainingCount} of ${maxCount} remain`
+    return 'nothing';
   }
 
   const twitterStyleMessage = (count: number, maxCount: number): string => {
     if (maxCount - count < 5) return `${maxCount - count}`
+
+    return `${maxCount - count}`;
   }
 
   return (
