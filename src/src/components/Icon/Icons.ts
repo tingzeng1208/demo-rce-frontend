@@ -1,5 +1,4 @@
 import AccessibilityNewSvg from 'uswds/dist/img/usa-icons/accessible_forward.svg'
-
 import AccessibleForwardSvg from 'uswds/dist/img/usa-icons/accessible_forward.svg'
 import AccountBalanceSvg from 'uswds/dist/img/usa-icons/account_balance.svg'
 import AccountBoxSvg from 'uswds/dist/img/usa-icons/account_box.svg'

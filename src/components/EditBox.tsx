@@ -65,7 +65,7 @@ export const EditForm: React.FC<FormProps> = ({id: number,
       </Grid>
     </Grid>
     <Grid row>
-      <Grid col={12}><Button label='Submit' primary></Button></Grid>
+      <Grid col={12}><Button label='Submit' primary type='submit'></Button></Grid>
     </Grid>
     
   </GridContainer>

@@ -42,9 +42,7 @@ export interface AppProps {
   editAApplication: typeof editAApplication
 }
 
-export class _App extends React.Component<AppProps>{
-
- 
+export class _App extends React.Component<AppProps>{ 
 
   state = {
     showingNew: false,

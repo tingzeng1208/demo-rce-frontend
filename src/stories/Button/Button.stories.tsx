@@ -11,6 +11,7 @@ export default {
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     onClick: {action: 'clicked'},
+    type: {defaultValue: 'button'},
     backgroundColor: { control: 'color' },
   },
 } as ComponentMeta<typeof Button>;
