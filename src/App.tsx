@@ -3,7 +3,7 @@ import { connect} from 'react-redux';
 import {FEMAApplication, fetchApplications,  deleteApplications, addAApplication, editAApplication } from './actions';
 import {StoreState } from './reducers';
 import CSS from 'csstype';
-import { ApiSync } from './reducers/ApiSync';
+import { ApiSync } from './API-service/ApiSync';
 import { AxiosResponse } from 'axios';
 import {ApplicationInfo} from './components/ApplicationInfo/ApplicationInfo';
 import { ApplicationList } from './reducers/ApplicationList';

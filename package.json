@@ -14,7 +14,6 @@
     "@types/redux-mock-store": "^1.0.3",
     "@vanilla-extract/css": "^1.6.8",
     "axios": "^0.21.4",
-    "babel-loader": "^8.2.3",
     "classnames": "^2.3.1",
     "env-cmd": "^10.1.0",
     "focus-trap-react": "^8.9.1",
@@ -73,7 +72,6 @@
     "@storybook/node-logger": "^6.4.14",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.4.14",
-    "@storybook/testing-react": "^1.2.3",
     "@testing-library/jest-dom": "^5.16.1",
     "redux-mock-store": "^1.5.4"
   }
