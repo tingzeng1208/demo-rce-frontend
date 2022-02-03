@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { EditForm } from "../story/EditBox";
-import { FEMAApplication } from "../actions";
+import { EditForm } from "./EditBox";
+import { FEMAApplication } from "../../actions";
 
 
 const application: FEMAApplication = {

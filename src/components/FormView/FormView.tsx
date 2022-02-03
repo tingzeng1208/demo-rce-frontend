@@ -1,4 +1,4 @@
-import {FEMAApplication} from '../actions';
+import {FEMAApplication} from '../../actions';
 import { Button, GridContainer, Grid, TextInput, Checkbox } from '@trussworks/react-uswds';
 import '@trussworks/react-uswds/lib/uswds.css';
 import '@trussworks/react-uswds/lib/index.css';

@@ -1,8 +1,8 @@
-import {FEMAApplication} from '../actions';
+import {FEMAApplication} from '../../actions';
 import { Button, Grid } from '@trussworks/react-uswds';
 import '@trussworks/react-uswds/lib/uswds.css';
 import '@trussworks/react-uswds/lib/index.css';
-import {leftGridSize,midGridSize, rightGridSize} from './App';
+import {leftGridSize,midGridSize, rightGridSize} from '../../App';
 
 import CSS from 'csstype';
 const button1style : CSS.Properties  = {
