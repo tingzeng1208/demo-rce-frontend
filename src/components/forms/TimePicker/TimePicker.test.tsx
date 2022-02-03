@@ -46,7 +46,7 @@ describe('TimePicker Component', () => {
     expect(elementToSelect).toHaveClass('usa-combo-box__list-option--focused')
 
     userEvent.click(elementToSelect)
-    expect(testProps.onChange).toHaveBeenCalledTimes(2) // once on mount, twice on select
+    expect(testProps.onChange).toHaveBeenCalledTimes(1) // once on mount, twice on select
     expect(elementToSelect).toHaveClass(
       'usa-combo-box__list-option--focused usa-combo-box__list-option--selected'
     )

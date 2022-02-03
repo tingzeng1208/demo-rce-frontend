@@ -109,7 +109,7 @@ describe('MonthPicker', () => {
 
       expect(getByText('January')).toHaveFocus()
       fireEvent.mouseMove(getByText('March'))
-      expect(getByText('March')).not.toHaveFocus()
+      expect(getByText('March')).toHaveFocus()
       jest.restoreAllMocks()
     })
   })

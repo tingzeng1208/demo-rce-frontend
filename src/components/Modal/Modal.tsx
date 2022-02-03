@@ -66,11 +66,17 @@ export const Modal = forwardRef(
     )
 
     useEffect(() => {
-      const SCROLLBAR_WIDTH = getScrollbarWidth()
-      const INITIAL_PADDING =
+      let SCROLLBAR_WIDTH: string = '100px';
+      let INITIAL_PADDING: string = '5px';
+      SCROLLBAR_WIDTH = getScrollbarWidth() === undefined ? SCROLLBAR_WIDTH : getScrollbarWidth();
+      INITIAL_PADDING =
         window
           .getComputedStyle(document.body)
           .getPropertyValue('padding-right') || '0px'
+      
+      if (INITIAL_PADDING === undefined) {
+        INITIAL_PADDING = '5px';
+      }
 
       const TEMPORARY_PADDING = `${
         parseInt(INITIAL_PADDING.replace(/px/, ''), 10) +

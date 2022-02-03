@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { Formbox } from "../story/FormView";
+import { Formbox } from "./FormView";
 
 
 describe("test form box", ()=>{

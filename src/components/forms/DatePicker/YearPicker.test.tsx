@@ -227,7 +227,7 @@ describe('YearPicker', () => {
 
       expect(getByText('2021')).toHaveFocus()
       fireEvent.mouseMove(getByText('2017'))
-      expect(getByText('2017')).not.toHaveFocus()
+      expect(getByText('2017')).toHaveFocus()
       jest.restoreAllMocks()
     })
   })
