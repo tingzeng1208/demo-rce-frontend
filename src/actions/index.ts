@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {Dispatch} from 'redux';
 import { ActionTypes } from './types';
-import { url } from '../components/ApiSync';
 
 // const url = 'https://mockend.com/tingzeng1208/rce-mock-backend/posts';
 

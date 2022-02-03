@@ -1,6 +1,6 @@
-import {FEMAApplication} from '../actions';
+import {FEMAApplication} from '../../actions';
 import {  GridContainer, Grid, TextInput} from '@trussworks/react-uswds';
-import { Button } from "../stories/Button/Button";
+import { Button } from "../Button/Button";
 import '@trussworks/react-uswds/lib/uswds.css';
 import '@trussworks/react-uswds/lib/index.css';
 import CSS from 'csstype';
@@ -65,9 +65,8 @@ export const EditForm: React.FC<FormProps> = ({id: number,
       </Grid>
     </Grid>
     <Grid row>
-      <Grid col={12}><Button label='Submit' primary type='submit'></Button></Grid>
-    </Grid>
-    
+      <Grid col={12}><Button type='submit'>Submit</Button></Grid>
+    </Grid>    
   </GridContainer>
   </form>
   </div>;

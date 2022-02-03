@@ -1,8 +1,8 @@
-import { ApplicationInfoInterface } from "../components/ApplicationInfo";
+import { ApplicationInfoInterface } from "../ApplicationInfo/ApplicationInfo";
 import { render, screen, RenderResult } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { ViewBox } from "../components/ViewBox";
-import { FEMAApplication } from "../actions";
+import { ViewBox } from "./ViewBox";
+import { FEMAApplication } from "../../actions";
 
 const application: ApplicationInfoInterface = {
   "Address": "YL40B8Ngz2",
