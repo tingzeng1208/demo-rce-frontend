@@ -3,3 +3,15 @@
 @import '~uswds/src/stylesheets/theme/_uswds-theme-spacing.scss';
 @import '~uswds/src/stylesheets/theme/_uswds-theme-color.scss';
 @import '~uswds/src/stylesheets/theme/_uswds-theme-utilities.scss';
+
+@import '../uswdsResources';
+
+@import 'backgrounds';
+@import 'type';
+
+
+@import '../settings.scss';
+
+// @import '~uswds/src/stylesheets/packages/_required.scss';
+
+// @import 'uswds'; // <-- this goes at the end, contains USWDS CSS

@@ -2946,10 +2946,10 @@
   "resolved" "https://registry.npmjs.org/@tootallnate/once/-/once-1.1.2.tgz"
   "version" "1.1.2"
 
-"@trussworks/react-uswds@^2.7.0":
-  "integrity" "sha512-+jqy6lHYDGuAf4J5g+Vq4WA1I4T9GLhoEFfZihU9zoLt7ZpYLsLhvsEmFHMI4Lel4o86g18PhRjJYK//Pt0idQ=="
-  "resolved" "https://registry.npmjs.org/@trussworks/react-uswds/-/react-uswds-2.7.0.tgz"
-  "version" "2.7.0"
+"@trussworks/react-uswds@^2.7.2":
+  "integrity" "sha512-xbraQh0NOVMQJnFGXVri5umYBDoGzg9W2J/JFAb9VVkeQ7ZYjtz3htjicEB591vMXWKo+OIcsyKizuay9sD22g=="
+  "resolved" "https://registry.npmjs.org/@trussworks/react-uswds/-/react-uswds-2.7.2.tgz"
+  "version" "2.7.2"
 
 "@types/aria-query@^4.2.0":
   "integrity" "sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig=="

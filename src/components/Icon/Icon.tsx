@@ -1,5 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
+import testIcon from '../../assets/accessible.svg';
 
 interface USWDSIconProps {
   focusable?: boolean
@@ -37,7 +38,8 @@ export function makeUSWDSIcon(Component: string) {
       ...iconProps,
     }
 
-    return <div />
-    // return <Component {...finalProps} />
+    // return <testIcon />
+    // return <div />
+    return <Component {...finalProps} />
   }
 }
