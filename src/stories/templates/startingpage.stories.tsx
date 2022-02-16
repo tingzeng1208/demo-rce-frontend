@@ -23,7 +23,7 @@ import { Logo } from '../../components/Footer/Logo/Logo'
 import { SocialLinks } from '../../components/Footer/SocialLinks/SocialLinks'
 
 export default {
-  title: 'Page Templates/Landing Page',
+  title: 'Page Templates/Starting Page',
   parameters: {
     docs: {
       description: {
@@ -126,7 +126,7 @@ export const LandingPage = (): React.ReactElement => {
         <Logo
           medium
           image={<img className="usa-footer__logo-img" src={logoImg} alt="" />}
-          heading={<p className="usa-footer__logo-heading">Name of Agency</p>}
+          heading={<p className="usa-footer__logo-heading">FEMA</p>}
         />
         <Grid className="usa-footer__contact-links" mobileLg={{ col: 6 }}>
           <SocialLinks
@@ -191,7 +191,7 @@ export const LandingPage = (): React.ReactElement => {
         <div className="usa-navbar">
           <Title id="extended-logo">
             <a href="/" title="Home" aria-label="Home">
-              Project title
+              Recovery Cloud Environment
             </a>
           </Title>
           <NavMenuButton
