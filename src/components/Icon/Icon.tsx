@@ -70,7 +70,7 @@ export function makeUSWDSIcon(source: string) {
             ...iconProps,
           }
 
-  
-    return <img src={source} {...finalProps}/>
+          const altText = `Image for ${source}`;
+    return <img src={source} {...finalProps} alt={altText}/>
   }
 }
