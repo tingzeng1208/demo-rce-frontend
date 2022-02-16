@@ -304,7 +304,7 @@ describe('Modal component', () => {
       await waitFor(() => handleOpen())
 
       expect(baseElement).toHaveClass('usa-js-modal--active')
-      // expect(baseElement).toHaveStyle('padding-right: 15px')
+      // expect(baseElement).toHaveStyle('padding-right: 15px')w
 
       await waitFor(() => handleClose())
 

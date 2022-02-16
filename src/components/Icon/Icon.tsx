@@ -8,36 +8,69 @@ interface USWDSIconProps {
   className?: string
 }
 
-export type IconProps = USWDSIconProps & JSX.IntrinsicElements['svg']
+export type IconProps = USWDSIconProps & JSX.IntrinsicElements['img']
 
 // export function makeUSWDSIcon(Component: React.ComponentType<IconProps>) {
 
-export function makeUSWDSIcon(Component: string) {
-  return (props: IconProps): JSX.Element => {
-    const {
-      size,
-      className,
-      focusable = false,
-      role = 'img',
-      ...iconProps
-    } = props
+// export function makeUSWDSIcon(Component: string) {
+//   return (props: IconProps): JSX.Element => {
+//     const {
+//       size,
+//       className,
+//       focusable = false,
+//       role = 'img',
+//       ...iconProps
+//     } = props
 
-    const classes = classnames(
-      'usa-icon',
-      {
-        [`usa-icon--size-${size}`]: size !== undefined,
-      },
-      className
-    )
+//     const classes = classnames(
+//       'usa-icon',
+//       {
+//         [`usa-icon--size-${size}`]: size !== undefined,
+//       },
+//       className
+//     )
 
-    const finalProps = {
-      className: classes,
-      focusable,
-      role,
-      ...iconProps,
-    }
+//     const finalProps = {
+//       className: classes,
+//       focusable,
+//       role,
+//       ...iconProps,
+//     }
 
-    return <div />
-    // return <Component {...finalProps} />
+//     // return <testIcon />
+//     // return <div />
+//     return <Component {...finalProps} />
+//   }
+// }
+
+export function makeUSWDSIcon(source: string) {
+    return (props:IconProps) =>{
+      const {
+            size,
+            className,
+            focusable = false,
+            role = 'img',
+            ...iconProps
+          } = props
+      
+          const fixSize = size === undefined ? 4 : size;
+  
+          const classes = classnames(
+            'usa-icon',
+            {
+              [`usa-icon--size-${fixSize}`]: fixSize !== undefined,
+            },
+            className
+          )
+      
+          const finalProps = {
+            className: classes,
+            focusable,
+            role,
+            ...iconProps,
+          }
+
+          const altText = `Image for ${source}`;
+    return <img src={source} {...finalProps} alt={altText}/>
   }
 }
