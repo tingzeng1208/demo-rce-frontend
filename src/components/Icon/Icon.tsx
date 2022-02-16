@@ -12,7 +12,38 @@ export type IconProps = USWDSIconProps & JSX.IntrinsicElements['svg']
 
 // export function makeUSWDSIcon(Component: React.ComponentType<IconProps>) {
 
-export function makeUSWDSIcon(Component: string) {
+// export function makeUSWDSIcon(Component: string) {
+//   return (props: IconProps): JSX.Element => {
+//     const {
+//       size,
+//       className,
+//       focusable = false,
+//       role = 'img',
+//       ...iconProps
+//     } = props
+
+//     const classes = classnames(
+//       'usa-icon',
+//       {
+//         [`usa-icon--size-${size}`]: size !== undefined,
+//       },
+//       className
+//     )
+
+//     const finalProps = {
+//       className: classes,
+//       focusable,
+//       role,
+//       ...iconProps,
+//     }
+
+//     // return <testIcon />
+//     // return <div />
+//     return <Component {...finalProps} />
+//   }
+// }
+
+export function makeUSWDSIcon(source: string) {
   return (props: IconProps): JSX.Element => {
     const {
       size,
@@ -39,6 +70,6 @@ export function makeUSWDSIcon(Component: string) {
 
     // return <testIcon />
     // return <div />
-    return <Component {...finalProps} />
+    return <img src={source}/>
   }
 }
