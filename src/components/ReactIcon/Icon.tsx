@@ -1,18 +1,26 @@
-import React from 'react'
-import classnames from 'classnames'
 
-interface USWDSIconProps {
-  focusable?: boolean
-  role?: string
-  size?: 3 | 4 | 5 | 6 | 7 | 8 | 9
-  className?: string
+import classnames from 'classnames';
+
+interface IconPropsOrig {
+    focusable?: boolean,
+    role?: string,
+    size?: 3 | 4 | 5 | 6 | 7 | 8 | 9,
+    className?: string
 }
 
-export type IconProps = USWDSIconProps & JSX.IntrinsicElements['svg']
+export type IconProps = IconPropsOrig & JSX.IntrinsicElements['svg']
 
-// export function makeUSWDSIcon(Component: React.ComponentType<IconProps>) {
+// export const ReactMakeIcon =({
+//   component: string,
+//   props: Iconprops
+// }): JSX.Element  =>{
 
-export function makeUSWDSIcon(Component: string) {
+//     // return <testIcon />
+//     // return <div />
+//     return <component />
+//   }
+
+export function ReactMakeIcon(Component: string) {
   return (props: IconProps): JSX.Element => {
     const {
       size,
