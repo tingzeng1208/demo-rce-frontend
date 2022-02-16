@@ -8,7 +8,7 @@ interface USWDSIconProps {
   className?: string
 }
 
-export type IconProps = USWDSIconProps & JSX.IntrinsicElements['svg']
+export type IconProps = USWDSIconProps & JSX.IntrinsicElements['img']
 
 // export function makeUSWDSIcon(Component: React.ComponentType<IconProps>) {
 
@@ -44,32 +44,33 @@ export type IconProps = USWDSIconProps & JSX.IntrinsicElements['svg']
 // }
 
 export function makeUSWDSIcon(source: string) {
-  return (props: IconProps): JSX.Element => {
-    const {
-      size,
-      className,
-      focusable = false,
-      role = 'img',
-      ...iconProps
-    } = props
+    return (props:IconProps) =>{
+      const {
+            size,
+            className,
+            focusable = false,
+            role = 'img',
+            ...iconProps
+          } = props
+      
+          const fixSize = size === undefined ? 4 : size;
+  
+          const classes = classnames(
+            'usa-icon',
+            {
+              [`usa-icon--size-${fixSize}`]: fixSize !== undefined,
+            },
+            className
+          )
+      
+          const finalProps = {
+            className: classes,
+            focusable,
+            role,
+            ...iconProps,
+          }
 
-    const classes = classnames(
-      'usa-icon',
-      {
-        [`usa-icon--size-${size}`]: size !== undefined,
-      },
-      className
-    )
-
-    const finalProps = {
-      className: classes,
-      focusable,
-      role,
-      ...iconProps,
-    }
-
-    // return <testIcon />
-    // return <div />
-    return <img src={source}/>
+  
+    return <img src={source} {...finalProps}/>
   }
 }

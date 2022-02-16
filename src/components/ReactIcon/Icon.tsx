@@ -2,7 +2,7 @@
 import classnames from 'classnames';
 import { Component } from 'react';
 import AccessibilityNewSvg from '../../../node_modules/uswds/dist/img/usa-icons/accessible_forward.svg';
-
+import BeddingSvg from 'uswds/dist/img/usa-icons/bedding.svg';
 
 interface IconPropsOrig {
     src?: string,
@@ -12,7 +12,7 @@ interface IconPropsOrig {
     className?: string
 }
 
-export type IconProps = IconPropsOrig & JSX.IntrinsicElements['svg']
+export type IconProps = IconPropsOrig & JSX.IntrinsicElements['img']
 
 // export const ReactMakeIcon =({
 //   component: string,
@@ -43,12 +43,39 @@ export class CustomIconProps extends Component<IconPropsOrig> {
 
 export function ReactMakeIcon(source: string) {
   return (props:IconProps) =>{
-    return <img src = {source} />;
+    const {
+          size,
+          className,
+          focusable = false,
+          role = 'img',
+          ...iconProps
+        } = props
+    
+        const fixSize = size === undefined ? 4 : size;
+
+        const classes = classnames(
+          'usa-icon',
+          {
+            [`usa-icon--size-${fixSize}`]: fixSize !== undefined,
+          },
+          className
+        )
+    
+        const finalProps = {
+          className: classes,
+          focusable,
+          role,
+          ...iconProps,
+        }
+    return <img src = {source} {...finalProps} />;
   }
 }
 
   export const IconAccessibilityNew: React.ComponentType<IconProps> =
   ReactMakeIcon(AccessibilityNewSvg)
+
+  export const IconBeddingSvg: React.ComponentType<IconProps> =
+  ReactMakeIcon(BeddingSvg)
   
   // return (props: IconProps): JSX.Element => {
   //   const {
