@@ -33,13 +33,33 @@ export class CustomIcon extends Component {
 
 export class CustomIconProps extends Component<IconPropsOrig> {
   render() {
-    return <img src={this.props.src} />;
+    const {
+      size,
+      className,
+      focusable = false,
+      role = 'img',
+      ...iconProps
+    } = this.props
+
+    const fixSize = size === undefined ? 4 : size;
+
+    const classes = classnames(
+      'usa-icon',
+      {
+        [`usa-icon--size-${fixSize}`]: fixSize !== undefined,
+      },
+      className
+    )
+
+    const finalProps = {
+      className: classes,
+      focusable,
+      role,
+      ...iconProps,
+    }
+    return <img src={this.props.src} {...finalProps} />;
   }
 }
-
-// export function FunctionIcon(): JSX.Element {
-//   return <img src={AccessibilityNewSvg} />;
-// }
 
 export function ReactMakeIcon(source: string) {
   return (props:IconProps) =>{
@@ -77,33 +97,4 @@ export function ReactMakeIcon(source: string) {
   export const IconBeddingSvg: React.ComponentType<IconProps> =
   ReactMakeIcon(BeddingSvg)
   
-  // return (props: IconProps): JSX.Element => {
-  //   const {
-  //     size,
-  //     className,
-  //     focusable = false,
-  //     role = 'img',
-  //     ...iconProps
-  //   } = props
-
-  //   const classes = classnames(
-  //     'usa-icon',
-  //     {
-  //       [`usa-icon--size-${size}`]: size !== undefined,
-  //     },
-  //     className
-  //   )
-
-  //   const finalProps = {
-  //     className: classes,
-  //     focusable,
-  //     role,
-  //     ...iconProps,
-  //   }
-
-    // return <testIcon />
-    // return <div />
-    // return <img src = {Component} />;
-    // return <Component {...finalProps} />
-  // }
-// }
+ 
