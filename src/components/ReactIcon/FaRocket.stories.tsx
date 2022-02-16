@@ -3,7 +3,7 @@ import { FaRocketIcon } from './RaRocket';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 export default {
-  title: 'Example/Icons/FaRocket',
+  title: 'ReactIcon/Icons/FaRocket',
   component: FaRocketIcon,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
  
