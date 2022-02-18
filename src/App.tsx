@@ -1,16 +1,16 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {StartingPage} from './pages/Starting';
+import {TopHeader} from './pages/TopHeader';
 import { Application } from './pages/Application';
-import { TestPage } from './pages/TestPage';
 
 
 export const App = ()=> {
   return (
     <Router>
-    <StartingPage />
+    <TopHeader />
     <Routes>
-        <Route path="/sample-application"  element={<Application />}>
-        </Route>
+        <Route path="/"  element={<StartingPage />} />
+        <Route path="/sample-application"  element={<Application />} />
     </Routes>
     </Router>
   );

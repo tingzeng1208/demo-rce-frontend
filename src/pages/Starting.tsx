@@ -170,8 +170,8 @@ export const StartingPage = (): React.ReactElement => {
 
   return (
     <>
-      <a className="usa-skipnav" href="#main-content">
-        Skip to main content
+      {/* <a className="usa-skipnav" href="#main-content">
+        Return to Main
       </a>
       <GovBanner />
       <div className={`usa-overlay ${mobileNavOpen ? 'is-visible' : ''}`}></div>
@@ -196,7 +196,7 @@ export const StartingPage = (): React.ReactElement => {
           mobileExpanded={mobileNavOpen}>
           <Search size="small" onSubmit={handleSearch} />
         </ExtendedNav>
-      </Header>
+      </Header> */}
 
       <main id="main-content">
         <section className="usa-hero" aria-label="Introduction">
