@@ -335,11 +335,7 @@ export const StartingPage = (): React.ReactElement => {
         </section>
       </main>
 
-      <Footer
-        returnToTop={returnToTop}
-        primary={footerPrimary}
-        secondary={footerSecondary}
-      />
+      
     </>
   )
 }
