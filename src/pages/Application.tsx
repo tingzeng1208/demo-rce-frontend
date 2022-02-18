@@ -29,7 +29,7 @@ const div1style : CSS.Properties  = {
 };
 
 const div2style : CSS.Properties  = {
-  width: '1000px',
+  width: '1200px',
   display: 'inline-block',
   height: 'auto'
 };
@@ -39,7 +39,8 @@ export interface AppProps {
   fetchApplications: Function;
   deleteApplications: typeof deleteApplications;
   addAApplication: typeof addAApplication;
-  editAApplication: typeof editAApplication
+  editAApplication: typeof editAApplication;
+  urlString: string;
 }
 
 export class _App extends React.Component<AppProps>{ 
@@ -125,8 +126,6 @@ export class _App extends React.Component<AppProps>{
           <Grid col={midGridSize}>Status</Grid>
           <Grid col={rightGridSize}>Action</Grid>
         </Grid>);
-    
-        // <tr><td>Applicant Name</td><td>Status</td><td>Action</td></tr>);
       }
       return this.displayElements;
     }
@@ -276,17 +275,10 @@ export class _App extends React.Component<AppProps>{
          <Header basic={true}>
         <div className="usa-nav-container" style={div2style}>
           <div className="usa-navbar">
-            <Title>Recovery Cloud Environment</Title>
+            <Title>Sample Application</Title>
             <NavMenuButton label="Menu" />
           </div>
-          <div><Search size="small" onSubmit={mockSubmit} /></div>
-          
-          {/* <PrimaryNav
-            items={['menu']}
-            mobileExpanded={true}
-            >
-            
-          </PrimaryNav> */}
+        
         </div>
       </Header>
         <table><tr><td>
@@ -322,7 +314,8 @@ const mapStateToProps = (state: StoreState) => {
   };
 }
 
+const urlString = 'http:\\localhost:5001';
 export const Application = connect(
   mapStateToProps, 
-  {fetchApplications, deleteApplications, addAApplication, editAApplication},
+  {fetchApplications, deleteApplications, addAApplication, editAApplication, urlString},
 )(_App);

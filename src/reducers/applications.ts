@@ -1,5 +1,5 @@
 
-import { FEMAApplication, FetchApplicationsAction, Action } from '../actions/index';
+import { FEMAApplication, Action } from '../actions/index';
 import { ActionTypes } from '../actions';
 
 export const applicationReducers = (state: FEMAApplication[] = [], action: Action) => {
