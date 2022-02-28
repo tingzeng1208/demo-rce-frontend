@@ -25,6 +25,9 @@ var EditBox_1 = require("../components/EditBox/EditBox");
 var react_uswds_1 = require("@trussworks/react-uswds");
 require("@trussworks/react-uswds/lib/uswds.css");
 require("@trussworks/react-uswds/lib/index.css");
+var SideNav_1 = require("../components/SideNav/SideNav");
+var GridContainer_1 = require("../components/grid/GridContainer/GridContainer");
+var Grid_1 = require("../components/grid/Grid/Grid");
 exports.url = 'http://localhost:5001/applications';
 exports.leftGridSize = 5;
 exports.midGridSize = 1;
@@ -33,6 +36,7 @@ var mockSubmit = function () { };
 var div1style = {
     width: '800px',
     display: 'inline-block',
+    margin: '40px, 40px, 35px, 10px',
     height: 'auto'
 };
 var div2style = {
@@ -168,10 +172,10 @@ var _App = /** @class */ (function (_super) {
                 return react_1["default"].createElement(ApplicationInfo_1.ApplicationInfo, { ApplicantName: applications.ApplicantName, status: applications.status, delAction: function () { return _this.onDeleteClick(applications.id); }, viewAction: function () { return _this.onViewClick(applications.id); }, editAction: function () { return _this.onEditClick(applications.id); } });
             });
             if (this.displayElements.length > 0) {
-                this.displayElements.unshift(react_1["default"].createElement(react_uswds_1.Grid, { row: true },
-                    react_1["default"].createElement(react_uswds_1.Grid, { col: exports.leftGridSize }, "Applicant Name:"),
-                    react_1["default"].createElement(react_uswds_1.Grid, { col: exports.midGridSize }, "Status"),
-                    react_1["default"].createElement(react_uswds_1.Grid, { col: exports.rightGridSize }, "Action")));
+                this.displayElements.unshift(react_1["default"].createElement(Grid_1.Grid, { row: true },
+                    react_1["default"].createElement(Grid_1.Grid, { col: exports.leftGridSize }, "Applicant Name:"),
+                    react_1["default"].createElement(Grid_1.Grid, { col: exports.midGridSize }, "Status"),
+                    react_1["default"].createElement(Grid_1.Grid, { col: exports.rightGridSize }, "Action")));
             }
             return this.displayElements;
         }
@@ -214,29 +218,39 @@ var _App = /** @class */ (function (_super) {
         var showingNew = this.state.showingNew;
         var showingDetail = this.state.showingDetail;
         var showingEdit = this.state.showingEdit;
-        return react_1["default"].createElement("div", null,
-            react_1["default"].createElement(react_uswds_1.Header, { basic: true },
-                react_1["default"].createElement("div", { className: "usa-nav-container", style: div2style },
-                    react_1["default"].createElement("div", { className: "usa-navbar" },
-                        react_1["default"].createElement(react_uswds_1.Title, null, "Sample Application"),
-                        react_1["default"].createElement(react_uswds_1.NavMenuButton, { label: "Menu" })))),
-            react_1["default"].createElement("table", null,
-                react_1["default"].createElement("tr", null,
-                    react_1["default"].createElement("td", null,
-                        react_1["default"].createElement("div", { style: div1style },
-                            react_1["default"].createElement("button", { onClick: this.buttonClick }, "Get list"),
-                            "\u00A0\u00A0",
-                            react_1["default"].createElement("button", { onClick: this.newClick }, "New"),
-                            react_1["default"].createElement("div", { style: { display: (showingNew ? 'block' : 'none') } },
-                                react_1["default"].createElement(FormView_1.Formbox, { onSubmit: this.onNewSubmit, children: '' })),
-                            react_1["default"].createElement("div", { style: div1style }, this.renderList()))),
-                    react_1["default"].createElement("td", { style: { verticalAlign: 'top' } },
-                        react_1["default"].createElement("div", { style: { display: (showingDetail ? 'inline-block' : 'none'), width: '200',
-                                height: 'auto',
-                                alignSelf: 'flex-end' } }, this.renderView()),
-                        react_1["default"].createElement("div", { style: { display: (showingEdit ? 'inline-block' : 'none'), width: '200',
-                                height: 'auto',
-                                alignSelf: 'flex-end' } }, this.renderEdit())))));
+        var menuItems = [
+            react_1["default"].createElement("a", { href: "../", key: "Main" }, "Main Page"),
+            react_1["default"].createElement("a", { href: ".", key: "Sample application", className: "usa-current" }, "Sample Application"),
+            react_1["default"].createElement("a", { href: "#three", key: "three" }, "Application two"),
+        ];
+        return react_1["default"].createElement(react_1["default"].Fragment, null,
+            react_1["default"].createElement(GridContainer_1.GridContainer, null,
+                react_1["default"].createElement(Grid_1.Grid, { row: true },
+                    react_1["default"].createElement(Grid_1.Grid, { col: 2 },
+                        react_1["default"].createElement(SideNav_1.SideNav, { items: menuItems })),
+                    react_1["default"].createElement(Grid_1.Grid, { col: 10 },
+                        react_1["default"].createElement(react_uswds_1.Header, { basic: true },
+                            react_1["default"].createElement("div", { className: "usa-nav-container", style: div2style },
+                                react_1["default"].createElement("div", { className: "usa-navbar" },
+                                    react_1["default"].createElement(react_uswds_1.Title, null, "Sample Application"),
+                                    react_1["default"].createElement(react_uswds_1.NavMenuButton, { label: "Menu" })))),
+                        react_1["default"].createElement("table", null,
+                            react_1["default"].createElement("tr", null,
+                                react_1["default"].createElement("td", null,
+                                    react_1["default"].createElement("div", { style: div1style },
+                                        react_1["default"].createElement("button", { onClick: this.buttonClick }, "Get list"),
+                                        "\u00A0\u00A0",
+                                        react_1["default"].createElement("button", { onClick: this.newClick }, "New"),
+                                        react_1["default"].createElement("div", { style: { display: (showingNew ? 'block' : 'none') } },
+                                            react_1["default"].createElement(FormView_1.Formbox, { onSubmit: this.onNewSubmit, children: '' })),
+                                        react_1["default"].createElement("div", { style: div1style }, this.renderList()))),
+                                react_1["default"].createElement("td", { style: { verticalAlign: 'top' } },
+                                    react_1["default"].createElement("div", { style: { display: (showingDetail ? 'inline-block' : 'none'), width: '160',
+                                            height: 'auto',
+                                            alignSelf: 'left', alignContent: 'left' } }, this.renderView()),
+                                    react_1["default"].createElement("div", { style: { display: (showingEdit ? 'inline-block' : 'none'), width: '200',
+                                            height: 'auto',
+                                            alignSelf: 'left', alignContent: 'left' } }, this.renderEdit()))))))));
     };
     return _App;
 }(react_1["default"].Component));

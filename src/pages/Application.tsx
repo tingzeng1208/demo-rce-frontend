@@ -10,9 +10,13 @@ import { ApplicationList } from '../reducers/ApplicationList';
 import { ViewBox} from '../components/ViewBox/ViewBox';
 import { Formbox } from '../components/FormView/FormView';
 import { EditForm } from '../components/EditBox/EditBox';
-import { Button, GridContainer, Grid, TextInput, Checkbox, Header, Title, NavMenuButton, PrimaryNav, Search } from '@trussworks/react-uswds';
+import { Button, TextInput, Checkbox, Header, Title, NavMenuButton, PrimaryNav, Search } from '@trussworks/react-uswds';
 import '@trussworks/react-uswds/lib/uswds.css';
 import '@trussworks/react-uswds/lib/index.css';
+import { SideNav } from '../components/SideNav/SideNav'
+import { Navbar } from 'react-bootstrap';
+import { GridContainer } from '../components/grid/GridContainer/GridContainer';
+import { Grid} from '../components/grid/Grid/Grid';
 
 export const url:string = 'http://localhost:5001/applications';
 
@@ -25,6 +29,7 @@ const mockSubmit = ()=>{};
 const div1style : CSS.Properties  = {
     width: '800px',
     display: 'inline-block',
+    margin: '40px, 40px, 35px, 10px',
     height: 'auto'
 };
 
@@ -44,6 +49,7 @@ export interface AppProps {
 }
 
 export class _App extends React.Component<AppProps>{ 
+  
 
   state = {
     showingNew: false,
@@ -55,6 +61,8 @@ export class _App extends React.Component<AppProps>{
   };
 
   public apiSync : ApiSync<FEMAApplication> = new ApiSync<FEMAApplication>(url);
+
+ 
 
   displayElements: JSX.Element[] = [];
 
@@ -271,7 +279,23 @@ export class _App extends React.Component<AppProps>{
       const {showingNew: showingNew} = this.state;
       const {showingDetail: showingDetail} = this.state;
       const {showingEdit: showingEdit} = this.state;
-      return <div>
+
+      const menuItems = [
+        <a href="../"  key="Main">
+          Main Page
+        </a>,
+        <a href="." key="Sample application" className="usa-current">
+          Sample Application
+        </a>,
+        <a href="#three" key="three">
+          Application two
+        </a>,
+      ];
+      return <>
+      <GridContainer>
+      <Grid row>
+      <Grid col={2}><SideNav items={menuItems}/></Grid>
+      <Grid col={10}>
          <Header basic={true}>
         <div className="usa-nav-container" style={div2style}>
           <div className="usa-navbar">
@@ -281,7 +305,10 @@ export class _App extends React.Component<AppProps>{
         
         </div>
       </Header>
-        <table><tr><td>
+      
+        <table><tr>
+          
+        <td>
         <div style={div1style}>
         <button onClick={this.buttonClick}>Get list</button>&nbsp;&nbsp;<button onClick={this.newClick}>New</button>
       <div style={{ display: (showingNew ? 'block' : 'none') }}>
@@ -294,15 +321,18 @@ export class _App extends React.Component<AppProps>{
       </div>
       </td>
       <td style={{verticalAlign: 'top'}}>
-      <div style={{ display: (showingDetail ? 'inline-block' : 'none'),  width: '200',
+      <div style={{ display: (showingDetail ? 'inline-block' : 'none'),  width: '160',
   height: 'auto',
-  alignSelf: 'flex-end'}}>{this.renderView()}</div>
+  alignSelf: 'left', alignContent:'left'}}>{this.renderView()}</div>
   <div style={{ display: (showingEdit ? 'inline-block' : 'none'),  width: '200',
   height: 'auto',
-  alignSelf: 'flex-end'}}>{this.renderEdit()}</div>
+  alignSelf: 'left', alignContent:'left'}}>{this.renderEdit()}</div>
   </td>  
   </tr></table>
-      </div>
+  </Grid>
+  </Grid>
+  </GridContainer>
+      </>
       ;
   }
 }
