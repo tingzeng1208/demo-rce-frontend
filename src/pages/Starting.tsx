@@ -3,39 +3,27 @@ import React, { useState } from 'react'
 import logoImg from 'uswds/src/img/logo-img.png'
 import circleImg from 'uswds/src/img/circle-124.png'
 
-import { GovBanner, GridContainer, Grid } from '../../index'
+import { GovBanner, GridContainer, Grid } from '../index'
 
 /** HEADER */
-import { Header } from '../../components/header/Header/Header'
-import { Title } from '../../components/header/Title/Title'
-import { Search } from '../../components/Search/Search'
-import { Menu } from '../../components/header/Menu/Menu'
-import { NavMenuButton } from '../../components/header/NavMenuButton/NavMenuButton'
-import { NavDropDownButton } from '../../components/header/NavDropDownButton/NavDropDownButton'
+import { Header } from '../components/header/Header/Header'
+import { Title } from '../components/header/Title/Title'
+import { Search } from '../components/Search/Search'
+import { Menu } from '../components/header/Menu/Menu'
+import { NavMenuButton } from '../components/header/NavMenuButton/NavMenuButton'
+import { NavDropDownButton } from '../components/header/NavDropDownButton/NavDropDownButton'
 
-import { ExtendedNav } from '../../components/header/ExtendedNav/ExtendedNav'
+import { ExtendedNav } from '../components/header/ExtendedNav/ExtendedNav'
 
 /** FOOTER */
-import { Address } from '../../components/Footer/Address/Address'
-import { Footer } from '../../components/Footer/Footer/Footer'
-import { FooterNav } from '../../components/Footer/FooterNav/FooterNav'
-import { Logo } from '../../components/Footer/Logo/Logo'
-import { SocialLinks } from '../../components/Footer/SocialLinks/SocialLinks'
+import { Address } from '../components/Footer/Address/Address'
+import { Footer } from '../components/Footer/Footer/Footer'
+import { FooterNav } from '../components/Footer/FooterNav/FooterNav'
+import { Logo } from '../components/Footer/Logo/Logo'
+import { SocialLinks } from '../components/Footer/SocialLinks/SocialLinks'
 
-export default {
-  title: 'Page Templates/Starting Page',
-  parameters: {
-    docs: {
-      description: {
-        component: `
-Page templates
-`,
-      },
-    },
-  },
-}
 
-export const LandingPage = (): React.ReactElement => {
+export const StartingPage = (): React.ReactElement => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [navDropdownOpen, setNavDropdownOpen] = useState([false, false])
 
@@ -69,7 +57,7 @@ export const LandingPage = (): React.ReactElement => {
       />
       <Menu
         id="extended-nav-section-one"
-        items={new Array(3).fill(<a href="#">Navigation link</a>)}
+        items={new Array(3).fill(<a href="/sample-application">Sample Application</a>)}
         isOpen={navDropdownOpen[0]}
       />
     </React.Fragment>,
@@ -88,8 +76,8 @@ export const LandingPage = (): React.ReactElement => {
         isOpen={navDropdownOpen[1]}
       />
     </React.Fragment>,
-    <a key="primaryNav_2" className="usa-nav__link" href="javascript:void(0)">
-      <span>Simple link</span>
+    <a key="primaryNav_2" className="usa-nav__link" href="sample-application">
+      <span>Sample Application</span>
     </a>,
   ]
 
@@ -182,8 +170,8 @@ export const LandingPage = (): React.ReactElement => {
 
   return (
     <>
-      <a className="usa-skipnav" href="#main-content">
-        Skip to main content
+      {/* <a className="usa-skipnav" href="#main-content">
+        Return to Main
       </a>
       <GovBanner />
       <div className={`usa-overlay ${mobileNavOpen ? 'is-visible' : ''}`}></div>
@@ -208,7 +196,7 @@ export const LandingPage = (): React.ReactElement => {
           mobileExpanded={mobileNavOpen}>
           <Search size="small" onSubmit={handleSearch} />
         </ExtendedNav>
-      </Header>
+      </Header> */}
 
       <main id="main-content">
         <section className="usa-hero" aria-label="Introduction">
@@ -347,11 +335,7 @@ export const LandingPage = (): React.ReactElement => {
         </section>
       </main>
 
-      <Footer
-        returnToTop={returnToTop}
-        primary={footerPrimary}
-        secondary={footerSecondary}
-      />
+      
     </>
   )
 }
