@@ -27,7 +27,7 @@ import {
   IdentifierLinkItem,
   IdentifierLink,
   IdentifierGov,
-} from '../../index'
+} from '@trussworks/react-uswds'
 
 import logoImg from 'uswds/src/img/logo-img.png'
 import circleSvg from 'uswds/src/img/circle-gray-20.svg'

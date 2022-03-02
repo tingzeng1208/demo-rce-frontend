@@ -1,6 +1,6 @@
 import {FEMAApplication} from '../../actions';
 import {  GridContainer, Grid, TextInput} from '@trussworks/react-uswds';
-import { Button } from "../Button/Button";
+import { Button } from '@trussworks/react-uswds';
 import '@trussworks/react-uswds/lib/uswds.css';
 import '@trussworks/react-uswds/lib/index.css';
 import CSS from 'csstype';

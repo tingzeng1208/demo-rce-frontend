@@ -13,10 +13,9 @@ import { EditForm } from '../components/EditBox/EditBox';
 import { Button, TextInput, Checkbox, Header, Title, NavMenuButton, PrimaryNav, Search } from '@trussworks/react-uswds';
 import '@trussworks/react-uswds/lib/uswds.css';
 import '@trussworks/react-uswds/lib/index.css';
-import { SideNav } from '../components/SideNav/SideNav'
-import { Navbar } from 'react-bootstrap';
-import { GridContainer } from '../components/grid/GridContainer/GridContainer';
-import { Grid} from '../components/grid/Grid/Grid';
+import { SideNav } from '@trussworks/react-uswds';
+import { GridContainer } from '@trussworks/react-uswds';
+import { Grid} from '@trussworks/react-uswds';
 
 export const url:string = 'http://localhost:5001/applications';
 
@@ -294,7 +293,9 @@ export class _App extends React.Component<AppProps>{
       return <>
       <GridContainer>
       <Grid row>
-      <Grid col={2}><SideNav items={menuItems}/></Grid>
+      <Grid col={2}>
+        <SideNav items={menuItems}/>
+        </Grid>
       <Grid col={10}>
          <Header basic={true}>
         <div className="usa-nav-container" style={div2style}>
