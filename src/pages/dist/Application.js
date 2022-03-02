@@ -25,9 +25,9 @@ var EditBox_1 = require("../components/EditBox/EditBox");
 var react_uswds_1 = require("@trussworks/react-uswds");
 require("@trussworks/react-uswds/lib/uswds.css");
 require("@trussworks/react-uswds/lib/index.css");
-var SideNav_1 = require("../components/SideNav/SideNav");
-var GridContainer_1 = require("../components/grid/GridContainer/GridContainer");
-var Grid_1 = require("../components/grid/Grid/Grid");
+var react_uswds_2 = require("@trussworks/react-uswds");
+var react_uswds_3 = require("@trussworks/react-uswds");
+var react_uswds_4 = require("@trussworks/react-uswds");
 exports.url = 'http://localhost:5001/applications';
 exports.leftGridSize = 5;
 exports.midGridSize = 1;
@@ -172,10 +172,10 @@ var _App = /** @class */ (function (_super) {
                 return react_1["default"].createElement(ApplicationInfo_1.ApplicationInfo, { ApplicantName: applications.ApplicantName, status: applications.status, delAction: function () { return _this.onDeleteClick(applications.id); }, viewAction: function () { return _this.onViewClick(applications.id); }, editAction: function () { return _this.onEditClick(applications.id); } });
             });
             if (this.displayElements.length > 0) {
-                this.displayElements.unshift(react_1["default"].createElement(Grid_1.Grid, { row: true },
-                    react_1["default"].createElement(Grid_1.Grid, { col: exports.leftGridSize }, "Applicant Name:"),
-                    react_1["default"].createElement(Grid_1.Grid, { col: exports.midGridSize }, "Status"),
-                    react_1["default"].createElement(Grid_1.Grid, { col: exports.rightGridSize }, "Action")));
+                this.displayElements.unshift(react_1["default"].createElement(react_uswds_4.Grid, { row: true },
+                    react_1["default"].createElement(react_uswds_4.Grid, { col: exports.leftGridSize }, "Applicant Name:"),
+                    react_1["default"].createElement(react_uswds_4.Grid, { col: exports.midGridSize }, "Status"),
+                    react_1["default"].createElement(react_uswds_4.Grid, { col: exports.rightGridSize }, "Action")));
             }
             return this.displayElements;
         }
@@ -224,11 +224,11 @@ var _App = /** @class */ (function (_super) {
             react_1["default"].createElement("a", { href: "#three", key: "three" }, "Application two"),
         ];
         return react_1["default"].createElement(react_1["default"].Fragment, null,
-            react_1["default"].createElement(GridContainer_1.GridContainer, null,
-                react_1["default"].createElement(Grid_1.Grid, { row: true },
-                    react_1["default"].createElement(Grid_1.Grid, { col: 2 },
-                        react_1["default"].createElement(SideNav_1.SideNav, { items: menuItems })),
-                    react_1["default"].createElement(Grid_1.Grid, { col: 10 },
+            react_1["default"].createElement(react_uswds_3.GridContainer, null,
+                react_1["default"].createElement(react_uswds_4.Grid, { row: true },
+                    react_1["default"].createElement(react_uswds_4.Grid, { col: 2 },
+                        react_1["default"].createElement(react_uswds_2.SideNav, { items: menuItems })),
+                    react_1["default"].createElement(react_uswds_4.Grid, { col: 10 },
                         react_1["default"].createElement(react_uswds_1.Header, { basic: true },
                             react_1["default"].createElement("div", { className: "usa-nav-container", style: div2style },
                                 react_1["default"].createElement("div", { className: "usa-navbar" },

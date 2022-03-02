@@ -2,25 +2,25 @@
 import React, { useState } from 'react'
 import logoImg from 'uswds/src/img/logo-img.png'
 
-import { GovBanner, GridContainer, Grid } from '../../index'
+import { GovBanner, GridContainer, Grid } from '@trussworks/react-uswds'
 
 /** HEADER */
-import { Header } from '../../components/header/Header/Header'
-import { Title } from '../../components/header/Title/Title'
-import { Search } from '../../components/header/../Search/Search'
-import { Menu } from '../../components/header/Menu/Menu'
-import { NavMenuButton } from '../../components/header/NavMenuButton/NavMenuButton'
-import { NavDropDownButton } from '../../components/header/NavDropDownButton/NavDropDownButton'
-import { PrimaryNav } from '../../components/header/PrimaryNav/PrimaryNav'
+import { Header } from '@trussworks/react-uswds'
+import { Title } from '@trussworks/react-uswds'
+import { Search } from '@trussworks/react-uswds'
+import { Menu } from '@trussworks/react-uswds'
+import { NavMenuButton } from '@trussworks/react-uswds'
+import { NavDropDownButton } from '@trussworks/react-uswds'
+import { PrimaryNav } from '@trussworks/react-uswds'
 
 /** FOOTER */
-import { Address } from '../../components/Footer/Address/Address'
-import { Footer } from '../../components/Footer/Footer/Footer'
-import { FooterNav } from '../../components/Footer/FooterNav/FooterNav'
-import { Logo } from '../../components/Footer/Logo/Logo'
-import { SocialLinks } from '../../components/Footer/SocialLinks/SocialLinks'
+import { Address } from '@trussworks/react-uswds'
+import { Footer } from '@trussworks/react-uswds'
+import { FooterNav } from '@trussworks/react-uswds'
+import { Logo } from '@trussworks/react-uswds'
+import { SocialLinks } from '@trussworks/react-uswds'
 
-import { SideNav } from '../../components/SideNav/SideNav'
+import { SideNav } from '@trussworks/react-uswds'
 
 export default {
   title: 'Page Templates/Documentation Page',
