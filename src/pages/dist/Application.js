@@ -28,6 +28,7 @@ require("@trussworks/react-uswds/lib/index.css");
 var react_uswds_2 = require("@trussworks/react-uswds");
 var react_uswds_3 = require("@trussworks/react-uswds");
 var react_uswds_4 = require("@trussworks/react-uswds");
+require("../styles/page.scss");
 exports.url = 'http://localhost:5001/applications';
 exports.leftGridSize = 5;
 exports.midGridSize = 1;
@@ -237,13 +238,14 @@ var _App = /** @class */ (function (_super) {
                         react_1["default"].createElement("table", null,
                             react_1["default"].createElement("tr", null,
                                 react_1["default"].createElement("td", null,
-                                    react_1["default"].createElement("div", { style: div1style },
-                                        react_1["default"].createElement("button", { onClick: this.buttonClick }, "Get list"),
-                                        "\u00A0\u00A0",
-                                        react_1["default"].createElement("button", { onClick: this.newClick }, "New"),
-                                        react_1["default"].createElement("div", { style: { display: (showingNew ? 'block' : 'none') } },
-                                            react_1["default"].createElement(FormView_1.Formbox, { onSubmit: this.onNewSubmit, children: '' })),
-                                        react_1["default"].createElement("div", { style: div1style }, this.renderList()))),
+                                    react_1["default"].createElement(react_uswds_3.GridContainer, null,
+                                        react_1["default"].createElement(react_uswds_4.Grid, { row: true },
+                                            react_1["default"].createElement("button", { onClick: this.buttonClick }, "Get list"),
+                                            "\u00A0\u00A0",
+                                            react_1["default"].createElement("button", { onClick: this.newClick }, "New"),
+                                            react_1["default"].createElement("div", { style: { display: (showingNew ? 'block' : 'none') } },
+                                                react_1["default"].createElement(FormView_1.Formbox, { onSubmit: this.onNewSubmit, children: '' }))),
+                                        react_1["default"].createElement("div", { className: 'div-class-application' }, this.renderList()))),
                                 react_1["default"].createElement("td", { style: { verticalAlign: 'top' } },
                                     react_1["default"].createElement("div", { style: { display: (showingDetail ? 'inline-block' : 'none'), width: '160',
                                             height: 'auto',

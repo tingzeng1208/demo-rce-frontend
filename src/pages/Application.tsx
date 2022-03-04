@@ -16,6 +16,7 @@ import '@trussworks/react-uswds/lib/index.css';
 import { SideNav } from '@trussworks/react-uswds';
 import { GridContainer } from '@trussworks/react-uswds';
 import { Grid} from '@trussworks/react-uswds';
+import '../styles/page.scss'
 
 export const url:string = 'http://localhost:5001/applications';
 
@@ -310,16 +311,23 @@ export class _App extends React.Component<AppProps>{
         <table><tr>
           
         <td>
-        <div style={div1style}>
+          <GridContainer>
+            <Grid row>
+            
         <button onClick={this.buttonClick}>Get list</button>&nbsp;&nbsp;<button onClick={this.newClick}>New</button>
       <div style={{ display: (showingNew ? 'block' : 'none') }}>
             
         <Formbox onSubmit={this.onNewSubmit} children=''/>
       </div>
-      <div style={div1style}>
+      </Grid>
+      {/* <div> */}
+      {/* <div style={div1style}> */}
+      <div className='div-class-application'>
       {this.renderList()}
-      </div>      
       </div>
+      {/* </Grid> */}
+      
+      </GridContainer>
       </td>
       <td style={{verticalAlign: 'top'}}>
       <div style={{ display: (showingDetail ? 'inline-block' : 'none'),  width: '160',

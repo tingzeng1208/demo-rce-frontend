@@ -1,5 +1,5 @@
 import {FEMAApplication} from '../../actions';
-import { Button, Grid } from '@trussworks/react-uswds';
+import { Button, Grid, GridContainer } from '@trussworks/react-uswds';
 import '@trussworks/react-uswds/lib/uswds.css';
 import '@trussworks/react-uswds/lib/index.css';
 import {leftGridSize,midGridSize, rightGridSize} from '../../pages/Application';
@@ -36,10 +36,13 @@ export const ApplicationInfo = ({id,
   // <Button type="button" size='small' onClick={editAction}>Edit</Button></td>
   // </tr></tbody></table>;
 
-  return <Grid row><Grid col={leftGridSize} role="contentinfo">{ApplicantName}</Grid>
+  return( 
+  <GridContainer>
+  <Grid row><Grid col={leftGridSize} role="contentinfo">{ApplicantName}</Grid>
   <Grid col={midGridSize}>{status? "Active": "Inactive"}</Grid>
   <Grid col={rightGridSize}><Button type="button" size='small' onClick={delAction} style={button1style}>Del</Button>
   <Button type="button" size='small' onClick={viewAction} style={button1style}>View</Button>
   <Button type="button" size='small' onClick={editAction}  style={button1style}>Edit</Button></Grid>
   </Grid>
+  </GridContainer>)
 };
